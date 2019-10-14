@@ -1,12 +1,3 @@
-'''SearchMe = "The apple is red and the berry is blue!"
-print(SearchMe.find("is"))
-print(SearchMe.rfind("is"))
-print(SearchMe.count("is"))
-print(SearchMe.startswith("The"))
-print(SearchMe.endswith("The"))
-print(SearchMe.replace("apple", "car")
-  .replace("berry", "truck"))
-  '''
 import discord
 from discord.ext import commands
 import random
@@ -23,7 +14,7 @@ class Reply(commands.Cog):
             return
         if(message.author.bot):
             return
-        
+
         if message.content.startswith('hello') or message.content.startswith('Hello'):
             await message.channel.send('Hello {0.author.mention}'.format(message))
             return

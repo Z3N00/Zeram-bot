@@ -9,7 +9,7 @@ initial_extensions = ['cogs.fun',
                       'cogs.jokes',
                       'cogs.utility',
                       'cogs.moderation']
-bot = commands.Bot(command_prefix=commands.when_mentioned_or('.'))
+bot = commands.Bot(command_prefix=commands.when_mentioned_or('z.', 'Z.'), description='Basic commands for Zeram')
 if __name__ == '__main__':
     for extension in initial_extensions:
         try:
@@ -21,7 +21,7 @@ if __name__ == '__main__':
 async def on_ready():
     guild = len(bot.guilds)
     activity = discord.Activity(name='z.help | ' + str(guild) + ' servers', type=discord.ActivityType.listening)
-    await client.change_presence(activity=activity)
+    await bot.change_presence(activity=activity)
 
     print(f'\n\nLogged in as: {bot.user.name} - {bot.user.id}\nVersion: {discord.__version__}\n')
     print(f'Successfully logged in and booted...!')
