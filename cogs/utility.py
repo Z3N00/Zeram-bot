@@ -51,30 +51,30 @@ class Utility(commands.Cog):
     async def invite(self, ctx):
         embed = discord.Embed(color=0xf41af4, description="[Invite Me! 😃 😱](https://discordapp.com/oauth2/authorize?client"
                                                       "_id=607611336268054563&scope=bot&permissions=2146958847)")
-                                                      
+
         embed.set_footer(text="Discord bot invite link.")
         await ctx.send(embed=embed)
 
 
-    @commands.command()
-    async def search(self, ctx, *, query):
-        flag = False
-
-        await ctx.send("Searching your query...")
-        try:
-            data = wikipedia.summary(query)
-        except:
-            flag = True
-            # print(data)
-        if flag:
-            await ctx.send("Sorry I am unable to find answers to your query... :grimacing:")
-        else:
-            Data = data.split("\n")
-
-        for d in Data:
-            await ctx.send("```" + d + "```")
-        await ctx.send("I hope you found this answer convincing. :smiley:")
-
+    # @commands.command()
+    # async def search(self, ctx, *, query):
+    #     flag = False
+    #
+    #     await ctx.send("Searching your query...")
+    #     try:
+    #         data = wikipedia.summary(query)
+    #     except:
+    #         flag = True
+    #         # print(data)
+    #     if flag:
+    #         await ctx.send("Sorry I am unable to find answers to your query... :grimacing:")
+    #     else:
+    #         Data = data.split("\n")
+    #
+    #     for d in Data:
+    #         await ctx.send("```" + d + "```")
+    #     await ctx.send("I hope you found this answer convincing. :smiley:")
+    #
 
 
 def setup(bot):
