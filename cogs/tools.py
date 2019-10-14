@@ -1,14 +1,14 @@
 import discord
 from discord.ext import commands
+import random
 import urbandict
 import wikipedia
-from googletrans import translator
+from googletrans import Translator
 
-class Member(commands.Cog):
-    """TestCog"""
-
+class Tools(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
 
     @commands.command()
     async def avatar(self, ctx, member: discord.Member = None):
@@ -20,6 +20,7 @@ class Member(commands.Cog):
         else:
             embed.set_image(url=member.avatar_url)
             await ctx.send(embed=embed)
+
 
     @commands.command()
     async def translate(self, ctx, *, message):
@@ -74,6 +75,5 @@ class Member(commands.Cog):
 
 
 
-
 def setup(bot):
-    bot.add_cog(Member(bot))
+    bot.add_cog(Tools(bot))

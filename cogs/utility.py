@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import random
-from turtledemo import wikipedia
+import wikipedia
 from googletrans import Translator
 import urbandict
 
@@ -55,25 +55,25 @@ class Utility(commands.Cog):
         await ctx.send(embed=embed)
 
 
-    # @commands.command()
-    # async def search(self, ctx, *, query):
-    #     flag = False
-    #
-    #     await ctx.send("Searching your query...")
-    #     try:
-    #         data = wikipedia.summary(query)
-    #     except:
-    #         flag = True
-    #         # print(data)
-    #     if flag:
-    #         await ctx.send("Sorry I am unable to find answers to your query... :grimacing:")
-    #     else:
-    #         Data = data.split("\n")
-    #
-    #     for d in Data:
-    #         await ctx.send("```" + d + "```")
-    #     await ctx.send("I hope you found this answer convincing. :smiley:")
-    #
+    @commands.command()
+    async def search(self, ctx, *, query):
+        flag = False
+
+        await ctx.send("Searching your query...")
+        try:
+            data = wikipedia.summary(query)
+        except:
+            flag = True
+            # print(data)
+        if flag:
+            await ctx.send("Sorry I am unable to find answers to your query... :grimacing:")
+        else:
+            Data = data.split("\n")
+
+        for d in Data:
+            await ctx.send("```" + d + "```")
+        await ctx.send("I hope you found this answer convincing. :smiley:")
+
 
 
 def setup(bot):
