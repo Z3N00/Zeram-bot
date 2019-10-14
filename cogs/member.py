@@ -1,5 +1,9 @@
 import discord
 from discord.ext import commands
+import random
+import urbandict
+import wikipedia
+from googletrans import translator
 
 class Member(commands.Cog):
     """TestCog"""
