@@ -8,16 +8,8 @@ class TestCog(commands.Cog):
         self.bot = bot
 
 
-    @commands.command(name='repeat', aliases=['copy', 'mimic'])
-    async def do_repeat(self, ctx, *, our_input: str):
-        await ctx.send(our_input)
-
     @commands.command()
-    async def hi(self, ctx):
-        await ctx.send("hello")
-
-    @commands.command()
-    async def greet(self, ctx):
+    async def test(self, ctx):
         await ctx.send("hello")
 
 def setup(bot):

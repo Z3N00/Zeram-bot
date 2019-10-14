@@ -8,7 +8,8 @@ initial_extensions = ['cogs.fun',
                       'cogs.reply',
                       'cogs.jokes',
                       'cogs.utility',
-                      'cogs.moderation']
+                      'cogs.moderation',
+                      'cogs.test']
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('z.', 'Z.'), description='Basic commands for Zeram')
 if __name__ == '__main__':
     for extension in initial_extensions:

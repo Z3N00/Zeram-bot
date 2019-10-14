@@ -11,7 +11,6 @@ class Utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-
     @commands.command()
     async def avatar(self, ctx, member: discord.Member = None):
         embed = discord.Embed(description='Your avatar :flushed: ')
