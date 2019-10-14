@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-class TestCog(commands.Cog):
+class Member(commands.Cog):
     """TestCog"""
 
     def __init__(self, bot):
@@ -71,9 +71,6 @@ class TestCog(commands.Cog):
 
 
 
-    @commands.command()
-    async def test(self, ctx):
-        await ctx.send("hello")
 
 def setup(bot):
-    bot.add_cog(TestCog(bot))
+    bot.add_cog(Member(bot))
