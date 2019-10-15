@@ -6,12 +6,14 @@ import wikipedia
 from googletrans import Translator
 
 class Tools(commands.Cog):
+    """Useful Commands"""
     def __init__(self, bot):
         self.bot = bot
 
 
     @commands.command()
     async def avatar(self, ctx, member: discord.Member = None):
+        """Get user profile picture"""
         embed = discord.Embed(description='Your avatar :flushed: ')
 
         if member == None:
@@ -24,6 +26,7 @@ class Tools(commands.Cog):
 
     @commands.command()
     async def translate(self, ctx, *, message):
+        """Translate any language"""
         icon = 'https://botlist.imgix.net/3605/c/discord_translator_avatar_v3-medium.jpg?auto=compress'
         value = random.randint(0, 0xffffff)
         translator = Translator()
@@ -37,6 +40,7 @@ class Tools(commands.Cog):
 
     @commands.command()
     async def define(self, ctx, *, term):
+        """Define any word"""
         information = urbandict.define(term)
         data = information[0]
         embed = discord.Embed(description=data['def'] + "\n", color=discord.Colour.blue())
@@ -47,6 +51,7 @@ class Tools(commands.Cog):
 
     @commands.command()
     async def invite(self, ctx):
+        """Invite me in your server"""
         embed = discord.Embed(color=0xf41af4, description="[Invite Me! 😃 😱](https://discordapp.com/oauth2/authorize?client"
                                                       "_id=607611336268054563&scope=bot&permissions=2146958847)")
 
@@ -56,6 +61,7 @@ class Tools(commands.Cog):
 
     @commands.command()
     async def search(self, ctx, *, query):
+        """Search from wikipedia"""
         flag = False
 
         await ctx.send("Searching your query...")
@@ -77,3 +83,4 @@ class Tools(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Tools(bot))
+    print("tools is loaded")

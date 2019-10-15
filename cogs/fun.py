@@ -9,7 +9,7 @@ from brainyquote import pybrainyquote
 import pyaztro
 
 class Fun(commands.Cog):
-
+    """Some fun commands"""
 
     def __init__(self, bot):
         self.bot = bot
@@ -17,12 +17,14 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def flip(self, ctx):
+        """Coin Flip"""
         Flip = random.choice(['Heads', 'Tails'])
         await ctx.send(Flip)
 
 
     @commands.command()
     async def reverse(self, ctx, *, message):
+        """Reverse the message"""
         rev = message[::-1]
         await ctx.send(rev)
 
@@ -60,7 +62,7 @@ class Fun(commands.Cog):
 
     @commands.command(name='8ball')
     async def _8ball(self, ctx, *, question):
-        """Chooses between multiple choices."""
+        """Ask your question from legendary 8ball"""
         responses = json.loads(open('responses.json').read())
         reply = f'Question: {question}\nAnswer: {random.choice(responses)}'
         embed = discord.Embed(description=reply, title=":8ball: | Let me see :thinking:",
@@ -86,12 +88,14 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def giphy(self, ctx, *, search):
+        """Get some gifs"""
         gifs = await self.search_gifs(search)
         await ctx.send(gifs)
 
 
     @commands.command()
     async def quote(self, ctx, topic=None):
+        """Get random quote or of your choice"""
         # popular_choice = ['motivational', 'life', 'positive', 'friendship', 'success', 'happiness', 'love']
         if topic is not None:
             data = pybrainyquote.get_quotes(topic)
@@ -107,6 +111,7 @@ class Fun(commands.Cog):
 
     @commands.command()
     async def horoscope(self, ctx, sign):
+        """"Get your daily Horoscope"""
         sign = sign.lower()
         horoscope = pyaztro.Aztro(sign=sign)
         embed = discord.Embed(title='Your Daily Horoscope: ', description=horoscope.description,
@@ -121,3 +126,4 @@ class Fun(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Fun(bot))
+    print("fun is loaded")

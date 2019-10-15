@@ -7,13 +7,14 @@ import requests
 import json
 
 class Joke(commands.Cog):
-
+    """Joke Commands"""
 
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command()
     async def meme(self, ctx):
+        """Choose some random meme"""
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
         list = ['https://www.reddit.com/r/memes/hot.json',
@@ -28,7 +29,7 @@ class Joke(commands.Cog):
 
     @commands.command()
     async def gif(self, ctx, *, search_term):
-
+        """Some more gifs"""
         apikey = "2MNXIESVXKVS"  # test value
         lmt = 25
 
@@ -51,6 +52,7 @@ class Joke(commands.Cog):
 
     @commands.command()
     async def chucknorris(self, ctx):
+        """Chucknorris is the best"""
         url = 'http://api.icndb.com/jokes/random'
         value = random.randint(0, 0xffffff)
         resp = requests.get(url=url)
@@ -63,6 +65,7 @@ class Joke(commands.Cog):
 
     @commands.command()
     async def geekjoke(self, ctx):
+        """Nerdy jokes"""
         value = random.randint(0, 0xffffff)
         image = 'https://images.discordapp.net/avatars/563434444321587202/ea95e92cbbedade1d5d06c7a34067e58.png?size=512'
         embed = discord.Embed(description='**' + pyjokes.get_joke() + '**', color=value)
@@ -72,6 +75,7 @@ class Joke(commands.Cog):
 
     @commands.command()
     async def joke(self, ctx):
+        """Random jokes"""
         value = random.randint(0, 0xffffff)
         source = 'Source:https://icanhazdadjoke.com'
         image = 'https://avatars.slack-edge.com/2016-08-13/69162711190_9ce4a3707b47d2a5a8d4_512.png'
@@ -86,6 +90,7 @@ class Joke(commands.Cog):
 
     @commands.command()
     async def roast(self, ctx, member=None):
+        """Get burned"""
         roasts = json.loads(open('roast.json').read())
         reply = random.choice(roasts)
 
@@ -94,3 +99,4 @@ class Joke(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Joke(bot))
+    print("jokes is loaded")

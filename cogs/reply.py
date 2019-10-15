@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import random
 class Reply(commands.Cog):
-    """TestCog"""
+    """Reply on message not for users"""
 
     def __init__(self, bot):
         self.bot = bot
@@ -27,3 +27,4 @@ class Reply(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Reply(bot))
+    print("reply is loaded")
