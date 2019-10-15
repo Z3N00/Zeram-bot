@@ -5,10 +5,11 @@ import sys, traceback
 token = 'MJ-Wjxz7u4NRQRJcQsTVG9Ff5hA.g8FAVX.zYTN0UDM4YjM2MzMxEjN3AjN'
 initial_extensions = ['cogs.fun',
                       'cogs.basic',
-                      'cogs.reply',
                       'cogs.jokes',
                       'cogs.moderation',
-                      'cogs.tools']
+                      'cogs.tools',
+                      'cogs.reply',
+                      'cogs.help']
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('z.', 'Z.'), description='Basic commands for Zeram')
 if __name__ == '__main__':
     for extension in initial_extensions:
