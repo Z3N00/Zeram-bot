@@ -13,7 +13,7 @@ class Help(commands.Cog):
         """Get all Bot commands"""
         if not cog:
 
-            embed = discord.Embed(description='Do '+'``'+'z.<Command name>'+'``'+ ' for commands', color=0x437840)
+            embed = discord.Embed(description='Do '+'``'+'z.help <Command name>'+'``'+ ' for commands', color=0x437840)
 
             cogs_desc = ''
             for x in self.bot.cogs:
@@ -36,7 +36,7 @@ class Help(commands.Cog):
                                 if not c.hidden:
                                     scog_info += f'**{c.name}** - {c.help}\n'
                             embed.add_field(name=f'{cog[0]} Module - {self.bot.cogs[cog[0]].__doc__}', value=scog_info)
-                            embed.set_footer(text='<z.command> for syntax')
+                            embed.set_footer(text='<z.help command> for syntax')
                             found = True
             if not found:
                 for x in self.bot.cogs:

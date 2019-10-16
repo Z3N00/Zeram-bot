@@ -8,23 +8,29 @@ class Moderation(commands.Cog):
         self.bot = bot
 
     @commands.command()
+    @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount=10):
-        """Erase the chat history"""
-        isAdmin = ctx.author.permissions_in(ctx.channel).administrator
-        if not isAdmin:
-            await ctx.send('You do not have sufficient privileges to access this command.')
-            return
-        await ctx.channel.purge(limit=amount)
-        await ctx.channel.send(f'{amount} message deleted', delete_after=2.0)
+        """Clear the chat history"""
+        flag =False
+        try:
+            await ctx.channel.purge(limit=amount)
+            await ctx.channel.send(f'{amount} message deleted', delete_after=2.0)
+        except:
+            flag = True
+
+        if flag:
+            await ctx.channel.send("You do not have sufficient privileges to access this command.", delete_after=3.0)
 
 
     @commands.command()
+    @commands.has_permissions(kik_members=True)
     async def kick(self, ctx, member: discord.Member, *, reason=None):
         """Kick the user"""
         await member.kick(reason=reason)
 
 
     @commands.command()
+    @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, member: discord.Member, *, reason=None):
         """Ban the user"""
         await member.ban(reason=reason)
