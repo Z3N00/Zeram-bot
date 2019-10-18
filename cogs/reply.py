@@ -9,21 +9,29 @@ class Reply(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        value = message
+        msg = message.content.lower()
         if message.author.id == self.bot.user.id:
             return
+
         if(message.author.bot):
             return
 
-        if message.content.startswith('hello') or message.content.startswith('Hello'):
+        if msg.startswith(("hello", "hi")):
             await message.channel.send('Hello {0.author.mention}'.format(message))
             return
 
-        capital = message.content.find('X')
-        small = message.content.find('x')
+        value = msg.find("x")
         list = ['XD', 'xD', 'xp', 'xd']
-        if capital != -1 or small != -1 :
+        if value != -1:
             await message.channel.send(random.choice(list))
+            return
+
+        value2 = msg.find("lol")
+        if value2 != -1:
+            await message.channel.send("Hahahaha...😂")
+            return
+
+
 
 def setup(bot):
     bot.add_cog(Reply(bot))
