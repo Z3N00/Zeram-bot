@@ -45,6 +45,7 @@ class Help(commands.Cog):
                         if c.name == cog[0]:
                             embed = discord.Embed(color=0x437840)
                             embed.add_field(name=f'{c.name} - {c.help}', value=f'Proper Syntax:\n`{c.qualified_name} {c.signature}`')
+                            embed.set_footer(text='<z.command name>')
                     found = True
 
                 if not found:

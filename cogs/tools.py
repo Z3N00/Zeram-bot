@@ -80,6 +80,17 @@ class Tools(commands.Cog):
         await ctx.send("I hope you found this answer convincing. :smiley:")
 
 
+    @commands.command()
+    async def hexcolor(self, ctx):
+        """Get random Colour hex code"""
+        value = random.randint(0, 0xffffff)
+        embed = discord.Embed(title="Your Colour 🌈")
+        img_url = f'https://dummyimage.com/500/{value}/&text=%20'
+        embed.set_image(url=img_url)
+        embed.set_footer(text=value)
+        await ctx.send(embed=embed)
+
+
 
 def setup(bot):
     bot.add_cog(Tools(bot))

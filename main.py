@@ -3,13 +3,14 @@ from discord.ext import commands
 import sys, traceback
 
 token = 'MJ-Wjxz7u4NRQRJcQsTVG9Ff5hA.g8FAVX.zYTN0UDM4YjM2MzMxEjN3AjN'
-initial_extensions = ['cogs.fun',
-                      'cogs.basic',
+initial_extensions = ['cogs.basic',
+                      'cogs.fun',
                       'cogs.jokes',
                       'cogs.moderation',
                       'cogs.tools',
-                      'cogs.reply',
-                      'cogs.help']
+                      'cogs.nsfw',
+                      'cogs.help',
+                      'cogs.reply']
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('z.', 'Z.'), description='Basic commands for Zeram')
 bot.remove_command('help')
 if __name__ == '__main__':
