@@ -27,27 +27,27 @@ class Joke(commands.Cog):
                 embed.set_image(url=res['data']['children'][random.randint(0, 25)]['data']['url'])
                 await ctx.send(embed=embed)
 
-    @commands.command()
-    async def gif(self, ctx, *, search_term):
-        """Some more gifs"""
-        apikey = "2MNXIESVXKVS"  # test value
-        lmt = 25
-
-        r = requests.get(
-            "https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search_term, apikey, lmt))
-
-        if r.status_code == 200:
-            # load the GIFs using the urls for the smaller GIF sizes
-            value = random.randint(0, 0xffffff)
-            embed = discord.Embed(title="Your Gif", color=value)
-            top_8gifs = json.loads(r.content)
-            my_dict = top_8gifs
-
-            gifs = my_dict['results'][random.randint(0, 24)]['media'][0]['gif']['url']
-            embed.set_image(url=gifs)
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send("No result found")
+    # @commands.command()
+    # async def gif(self, ctx, *, search_term):
+    #     """Some more gifs"""
+    #     apikey = "2MNXIESVXKVS"  # test value
+    #     lmt = 25
+    #
+    #     r = requests.get(
+    #         "https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search_term, apikey, lmt))
+    #
+    #     if r.status_code == 200:
+    #         # load the GIFs using the urls for the smaller GIF sizes
+    #         value = random.randint(0, 0xffffff)
+    #         embed = discord.Embed(title="Your Gif", color=value)
+    #         top_8gifs = json.loads(r.content)
+    #         my_dict = top_8gifs
+    #
+    #         gifs = my_dict['results'][random.randint(0, 24)]['media'][0]['gif']['url']
+    #         embed.set_image(url=gifs)
+    #         await ctx.send(embed=embed)
+    #     else:
+    #         await ctx.send("No result found")
 
 
     @commands.command()
