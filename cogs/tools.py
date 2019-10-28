@@ -60,11 +60,20 @@ class Tools(commands.Cog):
 
 
     @commands.command()
+    async def vote(self, ctx):
+        """Vote for the bot"""
+        vote_link = 'https://top.gg/bot/607611336268054563/vote'
+        embed = discord.Embed(description=f"[Vote Me 😊]({vote_link})", color=0xf41af4)
+        embed.set_footer(text="Daily vote 🙏")
+        await ctx.send(embed=embed)
+
+
+    @commands.command()
     async def search(self, ctx, *, query):
         """Search from wikipedia"""
         flag = False
 
-        await ctx.send("Searching your query...")
+        await ctx.channel.send("Searching your query...", delete_after=1.0)
         try:
             data = wikipedia.summary(query)
         except:

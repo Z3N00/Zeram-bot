@@ -86,7 +86,7 @@ class Fun(commands.Cog):
         except ApiException as e:
             return "Exception when calling DefaultApi->gifs_search_get: %s\n" % e
 
-    @commands.command(aliases=['gif'])
+    @commands.command()
     async def giphy(self, ctx, *, search):
         """Get some gifs"""
         gifs = await self.search_gifs(search)
