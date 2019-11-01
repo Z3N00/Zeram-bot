@@ -90,6 +90,26 @@ class Tools(commands.Cog):
 
 
     @commands.command()
+    async def poll(self, ctx, question, *choices: str):
+        """Take a Poll (example "question" "choice1" "choice2" ...)"""
+        emoji = ['1\N{combining enclosing keycap}', '2\N{combining enclosing keycap}',
+               '3\N{combining enclosing keycap}', '4\N{combining enclosing keycap}',
+               '5\N{combining enclosing keycap}', '6\N{combining enclosing keycap}',
+               '7\N{combining enclosing keycap}', '8\N{combining enclosing keycap}',
+               '9\N{combining enclosing keycap}', '10\N{combining enclosing keycap}']
+        emoji_len = len(emoji)
+        choice_len = len(choices)
+        msg = ""
+        value = random.randint(0, 0xffffff)
+        for i in range(choice_len):
+            msg = msg + f"{emoji[i]} {choices[i]}"+'\n'
+        embed = discord.Embed(title=f"📊 {question}", description=msg, color=value)
+        msg = await ctx.send(embed=embed)
+        for i in range(choice_len):
+            await msg.add_reaction(emoji=emoji[i])
+
+
+    @commands.command()
     async def hexcolor(self, ctx):
         """Get random Colour hex code"""
         value = random.randint(0, 0xffffff)

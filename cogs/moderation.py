@@ -27,7 +27,7 @@ class Moderation(commands.Cog):
     async def kick(self, ctx, member: discord.Member, *, reason=None):
         """Kick the user"""
         await member.kick(reason=reason)
-        await ctx.channel.send(f'{member.name}#{member.discriminator} has benn kicked from the server!', delete_after=5.0)
+        await ctx.channel.send(f'{member.name}#{member.discriminator} has been kicked from the server!', delete_after=5.0)
 
     @kick.error
     async def kick_error(self, ctx, error):
