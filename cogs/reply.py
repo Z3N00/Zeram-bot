@@ -20,9 +20,9 @@ class Reply(commands.Cog):
             await message.channel.send('Hello {0.author.mention}'.format(message))
             return
 
-        value = msg.find("x")
+        value1 = msg.find("x")
         list = ['XD', 'xD', 'xp', 'xd']
-        if value != -1:
+        if value1 != -1:
             await message.channel.send(random.choice(list))
             return
 
