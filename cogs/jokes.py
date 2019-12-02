@@ -97,6 +97,20 @@ class Joke(commands.Cog):
         await ctx.send(reply)
 
 
+
+    @commands.command()
+    async def insult(self, ctx, *, member=None):
+        """Insult Someone"""
+        value = random.randint(0, 0xffffff)
+        url = 'https://evilinsult.com/generate_insult.php?lang=en&type=json'
+        r = requests.get(url)
+        if r.status_code == 200:
+            content = json.loads(r.content)
+            insult = content['insult']
+            embed = discord.Embed(description=insult, color=value)
+            await ctx.send(embed=embed)
+
+
 def setup(bot):
     bot.add_cog(Joke(bot))
     print("jokes is loaded")

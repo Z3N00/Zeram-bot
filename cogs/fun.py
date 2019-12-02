@@ -7,6 +7,7 @@ import giphy_client
 from giphy_client.rest import ApiException
 from brainyquote import pybrainyquote
 import pyaztro
+from bs4 import BeautifulSoup
 
 class Fun(commands.Cog):
     """Some fun commands"""
@@ -122,6 +123,21 @@ class Fun(commands.Cog):
         embed.add_field(name='Compatibility', value=horoscope.compatibility, inline=False)
         embed.add_field(name='Current Date', value=horoscope.current_date, inline=False)
         embed.add_field(name='Lucky Number', value=horoscope.lucky_number, inline=False)
+        await ctx.send(embed=embed)
+
+
+    @commands.command()
+    async def pickupline(self, ctx, member=None):
+        """Get best Pickup Lines"""
+        URL = "http://www.pickuplinegen.com/"
+        r = requests.get(URL)
+
+        soup = BeautifulSoup(r.content, 'html5lib')
+        line = soup.findAll('div')
+        value = random.randint(0, 0xffffff)
+        embed = discord.Embed(description=line[1].getText(), color=value)
+        #print(soup.prettify())
+        #print(line[1].getText())
         await ctx.send(embed=embed)
 
 def setup(bot):

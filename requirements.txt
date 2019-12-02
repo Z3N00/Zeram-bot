@@ -30,3 +30,4 @@ pip
 colorlog
 wikipedia
 giphy_client
+beautifulsoup4==4.1.3
