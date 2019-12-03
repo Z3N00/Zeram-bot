@@ -5,7 +5,7 @@ import urbandict
 import wikipedia
 from googletrans import Translator
 
-class Tools(commands.Cog):
+class tools(commands.Cog):
     """Useful Commands"""
     def __init__(self, bot):
         self.bot = bot
@@ -122,5 +122,5 @@ class Tools(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(Tools(bot))
+    bot.add_cog(tools(bot))
     print("tools is loaded")

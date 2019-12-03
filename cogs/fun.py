@@ -9,7 +9,7 @@ from brainyquote import pybrainyquote
 import pyaztro
 from bs4 import BeautifulSoup
 
-class Fun(commands.Cog):
+class fun(commands.Cog):
     """Some fun commands"""
 
     def __init__(self, bot):
@@ -141,5 +141,5 @@ class Fun(commands.Cog):
         await ctx.send(embed=embed)
 
 def setup(bot):
-    bot.add_cog(Fun(bot))
+    bot.add_cog(fun(bot))
     print("fun is loaded")

@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import random
 import json
 
-class Nsfw(commands.Cog):
+class nsfw(commands.Cog):
     """Only high qualty ;)"""
 
     def __init__(self, bot):
@@ -78,5 +78,5 @@ class Nsfw(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(Nsfw(bot))
+    bot.add_cog(nsfw(bot))
     print("Nsfw is loaded")

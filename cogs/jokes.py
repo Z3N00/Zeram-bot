@@ -6,7 +6,7 @@ import random
 import requests
 import json
 
-class Joke(commands.Cog):
+class joke(commands.Cog):
     """Joke Commands"""
 
     def __init__(self, bot):
@@ -112,5 +112,5 @@ class Joke(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(Joke(bot))
+    bot.add_cog(joke(bot))
     print("jokes is loaded")
