@@ -31,10 +31,10 @@ class reply(commands.Cog):
             print("exc 2")
             return
 
-        if msg.startswith("hello"):
+        if msg.startswith(("hello", "hi")):
             list = ['Hello', 'Hola', 'Bonjour']
             reply = random.choice(list)
-            await message.channel.send('{reply} {0.author.mention}'.format(message))
+            await message.channel.send('Hello {0.author.mention}'.format(message))
             print("exc 3")
             return
 
