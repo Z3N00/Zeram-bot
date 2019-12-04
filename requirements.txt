@@ -30,3 +30,4 @@ pip
 colorlog
 wikipedia
 giphy_client
+html

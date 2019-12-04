@@ -132,12 +132,34 @@ class fun(commands.Cog):
         URL = "http://www.pickuplinegen.com/"
         r = requests.get(URL)
 
-        soup = BeautifulSoup(r.content, 'html5lib')
+        soup = BeautifulSoup(r.content, 'html.parser')
         line = soup.findAll('div')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(description=line[1].getText(), color=value)
-        #print(soup.prettify())
-        #print(line[1].getText())
+        await ctx.send(embed=embed)
+
+
+    @commands.command()
+    async def wallpaper(self, ctx):
+        """Get best Wallpapers """
+        url = 'https://www.reddit.com/r/wallpapers.json?limit=100'
+        response = requests.get(url, headers = {'User-agent': 'Zeram'})
+        value = random.randint(0, 0xffffff)
+        data = response.json()['data']['children']
+        i = random.randint(0, 100)
+        current_post = data[i]['data']
+        image_url = current_post['url']
+        if '.png' in image_url:
+            extension = '.png'
+        elif '.jpg' in image_url or '.jpeg' in image_url:
+            extension = '.jpeg'
+        elif 'imgur' in image_url:
+            image_url += '.jpeg'
+            extension = '.jpeg'
+
+        embed = discord.Embed(color=value)
+        embed.set_image(url=image_url)
+
         await ctx.send(embed=embed)
 
 def setup(bot):
