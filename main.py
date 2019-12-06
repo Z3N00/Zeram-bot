@@ -4,6 +4,7 @@ import sys, traceback
 
 token = 'MJ-Wjxz7u4NRQRJcQsTVG9Ff5hA.g8FAVX.zYTN0UDM4YjM2MzMxEjN3AjN'
 initial_extensions = ['cogs.basic',
+                      'cogs.actions',
                       'cogs.fun',
                       'cogs.jokes',
                       'cogs.moderation',
