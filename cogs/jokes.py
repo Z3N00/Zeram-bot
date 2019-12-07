@@ -31,7 +31,7 @@ class joke(commands.Cog):
     async def gif(self, ctx, *, search_term):
         """Some more gifs"""
         apikey = "2MNXIESVXKVS"  # test value
-        lmt = 25
+        lmt = 50
 
         r = requests.get(
             "https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search_term, apikey, lmt))
@@ -43,7 +43,7 @@ class joke(commands.Cog):
             top_8gifs = json.loads(r.content)
             my_dict = top_8gifs
 
-            gifs = my_dict['results'][random.randint(0, 24)]['media'][0]['gif']['url']
+            gifs = my_dict['results'][random.randint(0, 50)]['media'][0]['gif']['url']
             embed.set_image(url=gifs)
             await ctx.send(embed=embed)
         else:

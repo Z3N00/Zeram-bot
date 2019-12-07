@@ -14,7 +14,7 @@ class actions(commands.Cog):
     async def action(self, search_term):
 
         apikey = "2MNXIESVXKVS"  # test value
-        lmt = 50
+        lmt = 30
 
         r = requests.get(
             "https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search_term, apikey, lmt))
@@ -25,7 +25,7 @@ class actions(commands.Cog):
             top_8gifs = json.loads(r.content)
             my_dict = top_8gifs
 
-            gifs = my_dict['results'][random.randint(0, 50)]['media'][0]['gif']['url']
+            gifs = my_dict['results'][random.randint(0, 30)]['media'][0]['gif']['url']
             return gifs
 
         else:
