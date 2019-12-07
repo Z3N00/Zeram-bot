@@ -23,11 +23,11 @@ class basic(commands.Cog):
         """Bot will say hello"""
         await ctx.send("hello " + ctx.author.mention)
 
-    @commands.command()
-    async def greet(self, ctx, member):
-        """Greet the mention user"""
-        msg = random.choice(['Sup ', 'Wassup ', 'Hello ', 'Hi ', 'Namaste '])
-        await ctx.send(msg + member)
+    # @commands.command()
+    # async def greet(self, ctx, member):
+    #     """Greet the mention user"""
+    #     msg = random.choice(['Sup ', 'Wassup ', 'Hello ', 'Hi ', 'Namaste '])
+    #     await ctx.send(msg + member)
 
     @commands.command()
     async def ping(self, ctx):

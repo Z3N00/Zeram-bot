@@ -5,10 +5,11 @@ import sys, traceback
 token = 'MJ-Wjxz7u4NRQRJcQsTVG9Ff5hA.g8FAVX.zYTN0UDM4YjM2MzMxEjN3AjN'
 initial_extensions = ['cogs.basic',
                       'cogs.actions',
+                      'cogs.emotes',
                       'cogs.fun',
                       'cogs.jokes',
-                      'cogs.moderation',
                       'cogs.tools',
+                      'cogs.moderation',
                       'cogs.nsfw',
                       'cogs.help',
                       'cogs.reply']
@@ -29,6 +30,10 @@ async def on_ready():
 
     print(f'\n\nLogged in as: {bot.user.name} - {bot.user.id}\nVersion: {discord.__version__}\n')
     print(f'Successfully logged in and booted...!')
+
+
+
+
 
 bot_token = token[::-1]
 bot.run(bot_token, bot=True, reconnect=True)
