@@ -46,12 +46,12 @@ class reply(commands.Cog):
             await message.channel.send("What Ohhh? ")
             return
 
-        value3 = msg.find(("aw"))
+        value3 = msg.find(("aww"))
         if value3 != -1:
             await message.channel.send("🥺")
             return
 
-        value4 = msg.find((":3"))
+        value4 = msg.find((":"))
         if value4 != -1:
             await message.channel.send(":3")
             return
@@ -60,7 +60,7 @@ class reply(commands.Cog):
         if any(c in msg for c in words):
             await message.channel.send("Hahahaha...😂")
 
-        words2 = ["hehe", "haha"]
+        words2 = ["hehe", "hahaha"]
         if any(c in msg for c in words2):
             await message.channel.send("Lmao you so funny!")
 
