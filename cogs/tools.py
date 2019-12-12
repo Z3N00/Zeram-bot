@@ -80,13 +80,17 @@ class tools(commands.Cog):
             flag = True
             # print(data)
         if flag:
-            await ctx.send("Sorry I am unable to find answers to your query... :grimacing:")
+            await ctx.send("Sorry! I am unable to find answers to your query...:grimacing:")
         else:
             Data = data.split("\n")
 
         for d in Data:
             await ctx.send("```" + d + "```")
         await ctx.send("I hope you found this answer convincing. :smiley:")
+    @search.error
+    async def search_error(self, ctx, error):
+        if isinstance(error, commands.CheckFailure):
+            await ctx.send("")
 
 
     @commands.command()

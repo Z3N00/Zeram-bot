@@ -35,7 +35,7 @@ class Help(commands.Cog):
                             for c in self.bot.get_cog(y).get_commands():
                                 if not c.hidden:
                                     scog_info += f'**{c.name}** - {c.help}\n'
-                            embed.add_field(name=f'{cog[0]} Module - {self.bot.cogs[cog[0]].__doc__}', value=scog_info)
+                            embed.add_field(name=f'{cog[0]} - {self.bot.cogs[cog[0]].__doc__}', value=scog_info)
                             embed.set_footer(text='<z.help command> for syntax')
                             found = True
             if not found:

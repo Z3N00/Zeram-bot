@@ -20,42 +20,49 @@ class reply(commands.Cog):
             await ctx.send(embed=embed)
 
 
+
     @commands.Cog.listener()
     async def on_message(self, message):
         msg = message.content.lower()
         if message.author.id == self.bot.user.id:
-            print("exc 1")
             return
 
         if(message.author.bot):
-            print("exc 2")
             return
 
-        if msg.startswith(("hello", "hi")):
-            list = ['Hello', 'Hola', 'Bonjour']
-            reply = random.choice(list)
-            await message.channel.send('Hello {0.author.mention}'.format(message))
-            print("exc 3")
-            return
-
-        if msg.startswith("hola"):
-            list = ['Hello', 'Hola', 'Bonjour']
-            await message.channel.send('Hola {0.author.mention}'.format(message))
-            print("exc 3")
+        if msg.startswith(("hello", "hi", "hola")):
+            reply = random.choice(['Hello', 'Hola', 'Hi', 'Wassup'])
+            await message.channel.send(f'{reply} {message.author.mention}')
             return
 
         value1 = msg.find("x")
         list = ['XD', 'xD', 'xp', 'xd']
         if value1 != -1:
             await message.channel.send(random.choice(list))
-            print("exc 4")
             return
 
-        value2 = msg.find("lol")
+        value2 = msg.find(("oh"))
         if value2 != -1:
-            await message.channel.send("Hahahaha...😂")
-            print("exc 5")
+            await message.channel.send("What Ohhh? ")
             return
+
+        value3 = msg.find(("aw"))
+        if value3 != -1:
+            await message.channel.send("🥺")
+            return
+
+        value4 = msg.find((":3"))
+        if value4 != -1:
+            await message.channel.send(":3")
+            return
+
+        words = ["lmfao", "lmao", "lol"]
+        if any(c in msg for c in words):
+            await message.channel.send("Hahahaha...😂")
+
+        words2 = ["hehe", "haha"]
+        if any(c in msg for c in words2):
+            await message.channel.send("Lmao you so funny!")
 
         # value3 = msg.find("sometimes")
         # if value3 != -1:
