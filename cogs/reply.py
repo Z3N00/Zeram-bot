@@ -56,7 +56,7 @@ class reply(commands.Cog):
             await message.channel.send("Some Crimes")
 
 
-        words = ["lmfao", "lmao"]
+        words = ["lmfao", "lmao", "lolo"]
         if any(c in msg for c in words):
             await message.channel.send("Hahahaha...😂")
 
@@ -64,7 +64,7 @@ class reply(commands.Cog):
         if any(c in msg for c in words2):
             await message.channel.send("Lmao you so funny!")
 
-        words3 = [":3", ":X", ":p", ":!", ":|", ":/", ":v", ":o", ";"]
+        words3 = [":3", ":0", ":p", ":!", ":|", ":/", ":v", ":o", ";"]
         if any(c in msg for c in words3):
             await message.channel.send(":3")
 
