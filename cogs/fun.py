@@ -53,7 +53,7 @@ class fun(commands.Cog):
     async def repeat(self, ctx, times: int, *, content='repeating...'):
         """Repeats a message multiple times."""
         member = discord.Message
-        if times <= 100:
+        if times <= 10:
             for i in range(times):
                 await ctx.send(content)
 

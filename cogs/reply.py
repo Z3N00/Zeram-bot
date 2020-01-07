@@ -68,8 +68,9 @@ class reply(commands.Cog):
         if any(c in msg for c in words3):
             await message.channel.send(":3")
 
-
-
+        words4 = ["fuck", "shit", "asshole"]
+        if any(c in msg for c in words4):
+            await message.channel.send("God is watching you 😠", delete_after=4.0)
 
 def setup(bot):
     bot.add_cog(reply(bot))
