@@ -30,12 +30,12 @@ class reply(commands.Cog):
         if(message.author.bot):
             return
 
-        if msg.startswith(("hello", "hi", "hola")):
+        if msg.startswith(("hello", "hola")):
             reply = random.choice(['Hello', 'Hola', 'Hi', 'Wassup'])
             await message.channel.send(f'{reply} {message.author.mention}')
             return
 
-        value1 =  msg.find(("xd", "xD", "XD", "Xd"))
+        value1 = msg.find("xd")
         list = ['XD', 'xD', 'xp', 'xd']
         if value1 != -1:
             await message.channel.send(random.choice(list))
@@ -46,10 +46,10 @@ class reply(commands.Cog):
             await message.channel.send("What Ohhh? ")
             return
 
-        value3 = msg.find(("aww", "awh", "awe"))
-        if value3 != -1:
-            await message.channel.send("🥺")
-            return
+        # value3 = msg.find(("aww", "awh", "awe"))
+        # if value3 != -1:
+        #     await message.channel.send("🥺")
+        #     return
 
         value4 = msg.find("sometime")
         if value4 != -1:
