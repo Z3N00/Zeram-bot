@@ -35,7 +35,7 @@ class reply(commands.Cog):
             await message.channel.send(f'{reply} {message.author.mention}')
             return
 
-        value1 = msg.find("x")
+        value1 =  msg.find(("xd", "xD", "XD", "Xd"))
         list = ['XD', 'xD', 'xp', 'xd']
         if value1 != -1:
             await message.channel.send(random.choice(list))
@@ -46,13 +46,13 @@ class reply(commands.Cog):
             await message.channel.send("What Ohhh? ")
             return
 
-        value3 = msg.find(("aww"))
+        value3 = msg.find(("aww", "awh", "awe"))
         if value3 != -1:
             await message.channel.send("🥺")
             return
 
-        value4 = msg.find("sometimes")
-        if value3 != -1:
+        value4 = msg.find("sometime")
+        if value4 != -1:
             await message.channel.send("Some Crimes")
 
 

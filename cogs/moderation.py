@@ -70,6 +70,42 @@ class Moderation(commands.Cog):
             await ctx.channel.send(f'{ctx.author.mention} You have no permission for this command', delete_after=5.0)
 
 
+    @commands.command()
+    @commands.has_permissions(kick_members=True)
+    async def mute(self, ctx, member:discord.Member=None):
+        """Mute the user"""
+        role = discord.utils.get(ctx.guild.roles, name='Muted')
+        if not role:
+
+            muted = await ctx.guild.create_role(name="Muted")
+            for channel in ctx.guild.channels:
+                await channel.set_permissions(muted, send_messages=False,
+                                            read_message_history=True,
+                                            read_messages=True)
+
+            await member.add_roles(muted)
+
+        else:
+            await member.add_roles(role)
+            await ctx.send(f'{member.mention} has been muted', delete_after=5.0)
+
+
+    @commands.command()
+    @commands.has_permissions(kick_members=True)
+    async def unmute(self, ctx, member:discord.Member=None):
+        """Unmute the user"""
+        await member.remove_roles(discord.utils.get(ctx.guild.roles, name="Muted"))
+        await ctx.send(f'{member.mention} has been unmuted', delete_after=5.0)
+
+    @mute.error
+    @unmute.error
+    async def mute_error(self, ctx, error):
+        if isinstance(error, commands.CheckFailure):
+            await ctx.channel.send(f'{ctx.author.mention} You have no permission')
+
+
+
+
 def setup(bot):
     bot.add_cog(Moderation(bot))
     print("moderation is loaded")
