@@ -41,7 +41,7 @@ class reply(commands.Cog):
             await message.channel.send(random.choice(list))
             return
 
-        value2 = msg.find(("oh"))
+        value2 = msg.find(("ohhh"))
         if value2 != -1:
             await message.channel.send("What Ohhh? ")
             return
@@ -51,20 +51,20 @@ class reply(commands.Cog):
         #     await message.channel.send("🥺")
         #     return
 
-        value4 = msg.find("sometime")
-        if value4 != -1:
+        if msg.startswith(("sometime")):
             await message.channel.send("Some Crimes")
+            return
 
 
         words = ["lmfao", "lmao", "lolo"]
         if any(c in msg for c in words):
             await message.channel.send("Hahahaha...😂")
 
-        words2 = ["hehe", "hahaha"]
+        words2 = ["hehehe", "hahahaha"]
         if any(c in msg for c in words2):
             await message.channel.send("Lmao you so funny!")
 
-        words3 = [":3", ":0", ":p", ":!", ":|", ":/", ":v", ":o", ";"]
+        words3 = [":3", ":0", ":p", ":!", ":|", ":v", ":o", ";"]
         if any(c in msg for c in words3):
             await message.channel.send(":3")
 
