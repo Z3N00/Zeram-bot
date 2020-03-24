@@ -162,6 +162,35 @@ class fun(commands.Cog):
 
         await ctx.send(embed=embed)
 
+
+    @commands.command()
+    async def poem(self, ctx):
+        def tag_visible(element):
+            if element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
+                return False
+            if isinstance(element, Comment):
+                return False
+            return True
+
+
+        def text_from_html(body):
+            soup = BeautifulSoup(body, 'html.parser')
+            texts = soup.findAll('div',{"class": "elementor-shortcode"})
+            # visible_texts = filter(tag_visible, texts)
+            # return u" ".join(t.strip() for t in visible_texts)
+            return texts
+        html = text_from_html(requests.get('http://poems.com/todays-poem/').text)
+        kavita = ''
+
+        for elem in (html):
+
+            if(elem.p):
+                for text in elem.findAll("p"):
+                    kavita = kavita + f'{text.text}'
+        embed = discord.Embed(title='Your daily poem', description=f'```{kavita}```')
+        await ctx.send(embed=embed)
+
+
 def setup(bot):
     bot.add_cog(fun(bot))
     print("fun is loaded")
