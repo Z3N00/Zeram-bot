@@ -165,6 +165,7 @@ class fun(commands.Cog):
 
     @commands.command()
     async def poem(self, ctx):
+        """Get your daily Poems"""
         def tag_visible(element):
             if element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
                 return False

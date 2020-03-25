@@ -56,7 +56,7 @@ class reply(commands.Cog):
             return
 
 
-        words = ["lmfao", "lolo"]
+        words = ["lmfao", "lolol"]
         if any(c in msg for c in words):
             await message.channel.send("Hahahaha...😂")
 
@@ -64,13 +64,13 @@ class reply(commands.Cog):
         if any(c in msg for c in words2):
             await message.channel.send("Lmao you so funny!")
 
-        words3 = [":3", ":0", ":p", ":!", ":|", ":v", ":o", ";"]
+        words3 = [":3"]
         if any(c in msg for c in words3):
             await message.channel.send(":3")
 
         words4 = ["fuck"]
         if any(c in msg for c in words4):
-            await message.channel.send("God is watching you 😠")
+            await message.channel.send("God is watching you 😠", delete_after=4.0)
 
 def setup(bot):
     bot.add_cog(reply(bot))

@@ -83,8 +83,6 @@ class joke(commands.Cog):
         raw_joke = r.json()
         joke = raw_joke['joke']
         embed = discord.Embed(description='**' + joke + '**', color=value)
-        embed.set_footer(text=source, icon_url=image)
-
         await ctx.send(embed=embed)
 
 
