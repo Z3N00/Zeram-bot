@@ -112,7 +112,7 @@ class fun(commands.Cog):
 
     @commands.command()
     async def horoscope(self, ctx, sign):
-        """"Get your daily Horoscope"""
+        """Get your daily Horoscope"""
         sign = sign.lower()
         horoscope = pyaztro.Aztro(sign=sign)
         embed = discord.Embed(title='Your Daily Horoscope: ', description=horoscope.description,
