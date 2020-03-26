@@ -33,8 +33,12 @@ class Game(commands.Cog):
                 guess = int(msg.content)
 
                 if turn == 0:
-                    await ctx.send(f"You Lose! Answer is {WINNING_NUMBER}")
-                    return
+                    if guess == WINNING_NUMBER:
+                        await ctx.send(f"You guessed it! Good job!")
+                        return
+                    else:
+                        await ctx.send(f"You Lose! Answer is {WINNING_NUMBER}")
+                        return
 
                 if guess == WINNING_NUMBER:
                     await ctx.send(f"You guessed it! Good job!")
