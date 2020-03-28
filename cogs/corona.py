@@ -1,14 +1,12 @@
 import discord
 from discord.ext import commands
-
-from akinator.async_aki import Akinator
-import akinator
+import aiohttp
 import asyncio
 import corona_api
 
 
 class Corona(commands.Cog):
-    """TestCog"""
+    """Corons Stats"""
 
     def __init__(self, bot):
         self.bot = bot
