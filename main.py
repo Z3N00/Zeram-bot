@@ -13,7 +13,8 @@ initial_extensions = ['cogs.basic',
                       'cogs.moderation',
                       'cogs.nsfw',
                       'cogs.help',
-                      'cogs.reply']
+                      'cogs.reply',
+                      'cogs.corona']
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('z.', 'Z.'), description='Basic commands for Zeram')
 bot.remove_command('help')
 if __name__ == '__main__':
