@@ -51,9 +51,10 @@ class tools(commands.Cog):
 
     @commands.command()
     async def invite(self, ctx):
+        #https://discordapp.com/oauth2/authorize?client_id=607611336268054563&scope=bot&permissions=8206
         """Invite me in your server"""
         embed = discord.Embed(color=0xf41af4, description="[Invite Me! 😃 😱](https://discordapp.com/oauth2/authorize?client"
-                                                      "_id=607611336268054563&scope=bot&permissions=2146958847)")
+                                                      "_id=607611336268054563&scope=bot&permissions=8206)")
 
         embed.set_footer(text="Discord bot invite link.")
         await ctx.send(embed=embed)

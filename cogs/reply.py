@@ -30,7 +30,7 @@ class reply(commands.Cog):
         if(message.author.bot):
             return
 
-        if msg.startswith(("hello", "hola")):
+        if msg.startswith(("hola")):
             reply = random.choice(['Hello', 'Hola', 'Hi', 'Wassup'])
             await message.channel.send(f'{reply} {message.author.mention}')
             return
@@ -41,7 +41,7 @@ class reply(commands.Cog):
             await message.channel.send(random.choice(list))
             return
 
-        value2 = msg.find(("ohhhh"))
+        value2 = msg.find(("ohhhhhh"))
         if value2 != -1:
             await message.channel.send("What Ohhh? ")
             return
@@ -56,7 +56,7 @@ class reply(commands.Cog):
             return
 
 
-        words = ["lmfao", "lolol"]
+        words = ["lmfaoo", "lololol"]
         if any(c in msg for c in words):
             await message.channel.send("Hahahaha...😂")
 
@@ -68,9 +68,9 @@ class reply(commands.Cog):
         if any(c in msg for c in words3):
             await message.channel.send(":3")
 
-        words4 = ["fuck"]
-        if any(c in msg for c in words4):
-            await message.channel.send("God is watching you 😠", delete_after=4.0)
+        # words4 = ["fuck"]
+        # if any(c in msg for c in words4):
+        #     await message.channel.send("God is watching you 😠", delete_after=4.0)
 
 def setup(bot):
     bot.add_cog(reply(bot))
