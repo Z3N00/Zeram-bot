@@ -35,11 +35,11 @@ class reply(commands.Cog):
             await message.channel.send(f'{reply} {message.author.mention}')
             return
 
-        value1 = msg.find("xd")
-        list = ['XD', 'xD', 'xp', 'xd']
-        if value1 != -1:
-            await message.channel.send(random.choice(list))
-            return
+        # value1 = msg.find("xd")
+        # list = ['XD', 'xD', 'xp', 'xd']
+        # if value1 != -1:
+        #     await message.channel.send(random.choice(list))
+        #     return
 
         value2 = msg.find(("ohhhhhh"))
         if value2 != -1:
@@ -51,7 +51,7 @@ class reply(commands.Cog):
         #     await message.channel.send("🥺")
         #     return
 
-        if msg.startswith(("sometime")):
+        if msg.startswith(("sometimes")):
             await message.channel.send("Some Crimes")
             return
 
@@ -64,9 +64,9 @@ class reply(commands.Cog):
         if any(c in msg for c in words2):
             await message.channel.send("Lmao you so funny!")
 
-        words3 = [":3"]
-        if any(c in msg for c in words3):
-            await message.channel.send(":3")
+        # words3 = [":3"]
+        # if any(c in msg for c in words3):
+        #     await message.channel.send(":3")
 
         # words4 = ["fuck"]
         # if any(c in msg for c in words4):
