@@ -21,10 +21,10 @@ class Help(commands.Cog):
             basic = f'`ping`  `big`  `hello`'
             embed.add_field(name=f'😊 **Basic**', value=basic, inline=True)
 
-            game = f'`guess`'
+            game = f'`guess`  `rps`'
             embed.add_field(name=f'🎲 **Games**', value=game, inline=False)
 
-            fun = f"`flip`  `reverse`  `roll`  `choose`  `repeat`  `8ball`  `giphy`  `quote`  `horoscope`  `pickupline` `wallpaper` `poem`"
+            fun = f"`flip`  `reverse`  `roll`  `choose`  `repeat`  `8ball`  `giphy`  `howgay`  `quote`  `horoscope`  `pickupline` `wallpaper` `poem`"
             embed.add_field(name=f'⚽ **Fun**', value=fun, inline=False)
 
             joke = f"`meme`  `gif`  `chucknorris`  `geekjoke`  `joke`  `roast`  `insult`"

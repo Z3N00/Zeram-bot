@@ -192,6 +192,32 @@ class fun(commands.Cog):
         await ctx.send(embed=embed)
 
 
+    @commands.command(aliases=['gay'])
+    async def howgay(self, ctx, member:discord.Member=None):
+        """Gay Meter"""
+        result = random.randint(1, 100)
+        value = random.randint(0, 0xffffff)
+        embed = discord.Embed(color=value)
+        if member is None:
+            if ctx.author.id == 348349907746291722:
+                mari = "You're 100% gay 😎🤙🏻"
+                embed.add_field(name='Gay Meter 🏳️‍🌈', value=mari)
+                await ctx.send(embed=embed)
+            else:
+                rest = f"You're {result}% gay"
+                embed.add_field(name='Gay Meter 🏳️‍🌈', value=rest)
+                await ctx.send(embed=embed)
+        else:
+            if member.id == 348349907746291722:
+                mari = "You're 100% gay 😎🤙🏻"
+                embed.add_field(name='Gay Meter 🏳️‍🌈', value=mari)
+                await ctx.send(embed=embed)
+            else:
+                rest = f"{member.name} is {result}% gay"
+                embed.add_field(name='Gay Meter 🏳️‍🌈', value=rest)
+                await ctx.send(embed=embed)
+
+
 def setup(bot):
     bot.add_cog(fun(bot))
     print("fun is loaded")
