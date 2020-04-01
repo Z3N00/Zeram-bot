@@ -152,6 +152,41 @@ class tools(commands.Cog):
 
 
 
+    @commands.command(aliases=['w'])
+    async def weather(self, ctx, city_name):
+        """Check Weather condition """
+        api_key = "d7f2ea77494b015b990af5a12e4a1d85"
+        base_url = "http://api.openweathermap.org/data/2.5/weather?"
+        complete_url = base_url + "appid=" + api_key + "&q=" + city_name
+
+        response = requests.get(complete_url)
+
+        x = response.json()
+        if x["cod"] != "404":
+            y = x["main"]
+            current_temperature = y["temp"]
+            current_temperature = current_temperature - 273.15
+            current_temperature = float("{:.2f}".format(current_temperature))
+
+            current_pressure = y["pressure"]
+            current_humidiy = y["humidity"]
+            z = x["weather"]
+            weather_description = z[0]["description"]
+
+            value = random.randint(0, 0xffffff)
+            embed = discord.Embed(color=value, title='⛈️| Weather Report')
+            embed.add_field(name='Temperature', value=f"{current_temperature}°C", inline=False)
+            embed.add_field(name='Pressure', value=f"{current_pressure} hpa", inline=True)
+            embed.add_field(name='Humidity', value=f"{current_humidiy}%", inline=True)
+            embed.add_field(name='Condition', value=f"{weather_description}", inline=True)
+
+            await ctx.send(embed=embed)
+
+        else:
+            await ctx.send("City not found")
+
+
+
 def setup(bot):
     bot.add_cog(tools(bot))
     print("tools is loaded")
