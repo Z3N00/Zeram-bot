@@ -175,7 +175,7 @@ class tools(commands.Cog):
             weather_description = z[0]["description"]
 
             value = random.randint(0, 0xffffff)
-            embed = discord.Embed(color=value, title='⛈️| Weather Report')
+            embed = discord.Embed(color=value, title=f'⛈️| Weather Report: {city_name.upper()}')
             embed.add_field(name='Temperature', value=f"{current_temperature}°C", inline=False)
             embed.add_field(name='Pressure', value=f"{current_pressure} hpa", inline=True)
             embed.add_field(name='Humidity', value=f"{current_humidiy}%", inline=True)
