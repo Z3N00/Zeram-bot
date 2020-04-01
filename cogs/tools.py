@@ -4,6 +4,7 @@ import random
 import urbandict
 import wikipedia
 from googletrans import Translator
+import requests
 
 class tools(commands.Cog):
     """Useful Commands"""
