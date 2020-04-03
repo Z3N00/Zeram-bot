@@ -24,10 +24,13 @@ class Help(commands.Cog):
             game = f'`guess`  `rps`'
             embed.add_field(name=f'🎲 **Games**', value=game, inline=False)
 
+            image = f'`dog`  `cat`  `meme`  `gif`'
+            embed.add_field(name=f'📸 **Image**', value=image, inline=False)
+
             fun = f"`flip`  `reverse`  `roll`  `choose`  `repeat`  `8ball`  `giphy`  `howgay`  `quote`  `horoscope`  `pickupline` `wallpaper` `poem`"
             embed.add_field(name=f'⚽ **Fun**', value=fun, inline=False)
 
-            joke = f"`meme`  `gif`  `chucknorris`  `geekjoke`  `joke`  `roast`  `insult`"
+            joke = f"`chucknorris`  `geekjoke`  `joke`  `roast`  `insult`"
             embed.add_field(name=f'🎭 **Joke**', value=joke, inline=False)
 
             tools = f"`avatar`  `userinfo`  `translate`  `define`  `weather`  `search`  `poll`  `invite`  `vote`"
@@ -44,6 +47,10 @@ class Help(commands.Cog):
 
             corona = f'`coronavirus`  `cvlb`'
             embed.add_field(name=f'😷 **Corona Stats**', value=corona, inline=False)
+
+            nsfw = f'`pgif`  `boobs`  `ass`'
+            embed.add_field(name=f'💦 **NSFW**', value=nsfw, inline=False)
+
 
             embed.set_footer(text="More commands coming soon!")
 
