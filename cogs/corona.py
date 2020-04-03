@@ -5,6 +5,34 @@ import asyncio
 import corona_api
 
 
+
+def generate_base_embed(embed, data):
+    embed.add_field(name="Total cases", value = corona_api.format_number(data.cases))
+    embed.add_field(name="Cases today", value = corona_api.format_number(data.today_cases))
+    embed.add_field(name="Total deaths", value = corona_api.format_number(data.deaths))
+    embed.add_field(name="Deaths today", value = corona_api.format_number(data.today_deaths))
+
+def generate_all_embed(embed, data):
+    embed.add_field(name="Total recoveries", value = corona_api.format_number(data.recoveries))
+    embed.add_field(name="Total critical cases", value = corona_api.format_number(data.critical))
+    embed.add_field(name="Active cases", value = corona_api.format_number(data.active))
+    embed.add_field(name="Last updated", value = corona_api.format_date(data.updated))
+
+def generate_country_embed(embed, data):
+    embed.add_field(name="Total recoveries", value = corona_api.format_number(data.recoveries))
+    embed.add_field(name="Total critical cases", value = corona_api.format_number(data.critical))
+    embed.add_field(name="Active cases", value = corona_api.format_number(data.active))
+    embed.add_field(name="Cases per million people", value = corona_api.format_number(data.cases_per_million))
+    embed.add_field(name="Deaths per million people", value = corona_api.format_number(data.deaths_per_million))
+    embed.add_field(name="Last updated", value = corona_api.format_date(data.updated))
+    embed.description = "**Country: {}**".format(data.name)
+    embed.set_thumbnail(url=data.flag)
+
+def generate_state_embed(embed, data):
+    embed.add_field(name="Active cases", value = corona_api.format_number(data.active))
+    embed.description = "**State: {}**".format(data.name)
+
+
 class Corona(commands.Cog):
     """Corons Stats"""
 
@@ -13,11 +41,7 @@ class Corona(commands.Cog):
         self.corona = corona_api.Client()
 
 
-    # @commands.command()
-    # async def hi(self, ctx):
-    #     await ctx.send("hello")
-
-    @commands.command(aliases=["cv", "corona"])
+    @commands.command(name="coronavirus", aliases=["cv", "corona"])
     async def coronavirus(self, ctx, country=None, *, state=None):
 
         """
@@ -50,32 +74,24 @@ class Corona(commands.Cog):
         embed = discord.Embed(title="Coronavirus (COVID-19) stats", color=65280)
         embed.set_footer(text="These stats are what has been officially confirmed. It is possible that real figures are different.")
 
-        embed.add_field(name="Total cases", value = corona_api.format_number(data.cases))
-        embed.add_field(name="Cases today", value = corona_api.format_number(data.today_cases))
-        embed.add_field(name="Total deaths", value = corona_api.format_number(data.deaths))
-        embed.add_field(name="Deaths today", value = corona_api.format_number(data.today_deaths))
-        embed.add_field(name="Total recoveries", value = corona_api.format_number(data.recoveries))
-
-        if not isinstance(data, corona_api.StateStatistics):
-            embed.add_field(name="Total critical cases", value = corona_api.format_number(data.critical))
+        generate_base_embed(embed, data)
 
         if isinstance(data, corona_api.GlobalStatistics):
-            embed.add_field(name="Last updated", value = corona_api.format_date(data.updated))
+            generate_all_embed(embed, data)
 
         elif isinstance(data, corona_api.CountryStatistics):
-            embed.add_field(name="Cases per million people", value = corona_api.format_number(data.cases_per_million))
-            embed.description = "**Country: {}**".format(data.name)
-            embed.set_thumbnail(url=data.flag)
+            generate_country_embed(embed, data)
 
-        else:
-            embed.add_field(name="Active cases", value=corona_api.format_number(data.active))
-            embed.description = "**State: {}**".format(data.name)
+        elif isinstance(data, corona_api.StateStatistics):
+            generate_state_embed(embed, data)
 
         await ctx.send(embed=embed)
 
 
-    @commands.command(aliases=["cvlb", "coronatop", "cvtop"])
-    async def coronavirusleaderboard(self, ctx):
+
+
+    @commands.command(name="coronavirusleaderboard", aliases=["cvlb", "coronaleaderboard", "coronatop", "cvtop"])
+    async def coronavirus_leaderboard(self, ctx):
         """Get the Leaderboard Results"""
         data = await self.corona.get_sorted_data("cases")
 
@@ -100,7 +116,6 @@ class Corona(commands.Cog):
             )
 
         await ctx.send(embed=embed)
-
 
 
 def setup(bot):
