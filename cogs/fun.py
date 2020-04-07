@@ -218,6 +218,22 @@ class fun(commands.Cog):
                 await ctx.send(embed=embed)
 
 
+    @commands.command()
+    async def gender(self, ctx, name:str):
+        """Determines the gender """
+
+        url = f'https://api.genderize.io?name={name}'
+
+        response = requests.get(url, headers = {'User-agent': 'Zeram'})
+        var = json.loads(response.text)
+        gender = var['gender']
+        probability = int(var['probability']*100)
+        msg = f"I am sure you're {probability}% {gender}"
+        embed = discord.Embed(description=msg)
+
+        await ctx.send(embed=embed)
+
+
 def setup(bot):
     bot.add_cog(fun(bot))
     print("fun is loaded")
