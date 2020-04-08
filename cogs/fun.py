@@ -234,6 +234,50 @@ class fun(commands.Cog):
         await ctx.send(embed=embed)
 
 
+
+    @commands.command()
+    async def ship(self, ctx, name1, name2):
+        """Check love Percentage"""
+
+        def sumOfDigits(num):
+            sum = 0
+            while num > 0:
+                sum += (num%10)
+                num /= 10
+            return sum
+
+        name1 = name1.lower()
+        name2 = name2.lower()
+        sum1 = 0
+        for i in range(len(name1)):
+            sum1 += ord(name1[i])
+
+        sum2 = 0
+        for i in range(len(name2)):
+            sum2 += ord(name2[i])
+
+        perc =int((sumOfDigits(sum1) + sumOfDigits(sum2)) + 40);
+
+        value = 0
+        emoji = '🤍'
+        str = '----------'
+        s = list(str)
+        if perc > 100:
+            perc =  100
+            value = 10
+        else:
+            value = int(perc/10)
+
+        for i in range(value):
+            s[i] = emoji
+        bar = "".join(s)
+        shipName = name1[:1]+name2[1:]
+        desc = f" **💑 Love calculator**\n\n ``{name1}`` 💕 ``{name2}`` \t [{bar}] {perc}% \n\n They make ``{shipName}`` together"
+        embed = discord.Embed(description=desc, color=0xFA8072)
+
+        await ctx.send(embed=embed)
+
+
 def setup(bot):
     bot.add_cog(fun(bot))
     print("fun is loaded")

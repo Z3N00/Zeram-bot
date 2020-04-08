@@ -27,7 +27,7 @@ class Help(commands.Cog):
             image = f'`meme`  `gif`  `emoji`  `dog`  `cat`  `fox`  `panda`  `koala`  `redpanda`  `bird`'
             embed.add_field(name=f'📸 **Image**', value=image, inline=False)
 
-            fun = f"`flip`  `reverse`  `roll`  `choose`  `repeat`  `8ball`  `giphy`  `howgay`  `gender`  `quote`  `horoscope`  `pickupline` `wallpaper` `poem`"
+            fun = f"`flip`  `reverse`  `roll`  `choose`  `repeat`  `8ball`  `giphy`  `ship`  `howgay`  `gender`  `quote`  `horoscope`  `pickupline` `wallpaper` `poem`"
             embed.add_field(name=f'⚽ **Fun**', value=fun, inline=False)
 
             joke = f"`chucknorris`  `geekjoke`  `joke`  `roast`  `insult`"
