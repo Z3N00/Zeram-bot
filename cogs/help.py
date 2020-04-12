@@ -24,7 +24,7 @@ class Help(commands.Cog):
             game = f'`guess`  `rps`'
             embed.add_field(name=f'🎲 **Games**', value=game, inline=False)
 
-            image = f'`meme`  `gif`  `emoji`  `dog`  `cat`  `fox`  `panda`  `koala`  `redpanda`  `bird`'
+            image = f'`meme`  `gif`  `emoji`  `dog`  `cat`  `fox`  `panda`  `koala`  `redpanda`  `bird`  `bunny`  `lizard`'
             embed.add_field(name=f'📸 **Image**', value=image, inline=False)
 
             fun = f"`flip`  `reverse`  `roll`  `choose`  `repeat`  `8ball`  `giphy`  `ship`  `howgay`  `gender`  `quote`  `horoscope`  `pickupline` `wallpaper` `poem`"

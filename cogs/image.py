@@ -115,6 +115,46 @@ class Image(commands.Cog):
         await ctx.send(embed=embed)
 
 
+    @commands.command()
+    async def bunny(self, ctx):
+        """Random bunny pics"""
+        key ='jHpBGu-nSfzfwYw6VCM5PjEjnXhQC8__dTtaBW4_B7I'
+        page_num = random.randint(1, 40)
+        url = f'https://api.unsplash.com/search/photos?page={page_num}&query=bunny&client_id={key}'
+
+        response = requests.get(url, headers = {'User-agent': 'Zeram'})
+        var = json.loads(response.text)
+        pic_num = random.randint(0, 9)
+        img_url = var['results'][pic_num]['urls']['raw']
+
+        value = random.randint(0, 0xffffff)
+        embed = discord.Embed(color=value, timestamp=datetime.datetime.utcnow())
+        embed.set_image(url=img_url)
+        embed.set_footer(text=ctx.author)
+
+        await ctx.send(embed=embed)
+
+
+    @commands.command()
+    async def lizard(self, ctx):
+        """Random lizard pics"""
+        key ='jHpBGu-nSfzfwYw6VCM5PjEjnXhQC8__dTtaBW4_B7I'
+        page_num = random.randint(1, 100)
+        url = f'https://api.unsplash.com/search/photos?page={page_num}&query=lizard&client_id={key}'
+
+        response = requests.get(url, headers = {'User-agent': 'Zeram'})
+        var = json.loads(response.text)
+        pic_num = random.randint(0, 9)
+        img_url = var['results'][pic_num]['urls']['raw']
+
+        value = random.randint(0, 0xffffff)
+        embed = discord.Embed(color=value, timestamp=datetime.datetime.utcnow())
+        embed.set_image(url=img_url)
+        embed.set_footer(text=ctx.author)
+
+        await ctx.send(embed=embed)
+
+
 
 
 def setup(bot):
