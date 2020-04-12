@@ -189,6 +189,14 @@ class tools(commands.Cog):
             await ctx.send("City not found")
 
 
+    @commands.command(name='me')
+    @commands.is_owner()
+    async def only_me(self, ctx):
+        """A simple command which only responds to the owner of the bot."""
+
+        await ctx.send(f'Hello {ctx.author.mention}. This command can only be used by you!!')
+
+
 
 def setup(bot):
     bot.add_cog(tools(bot))
