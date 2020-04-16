@@ -189,6 +189,12 @@ class tools(commands.Cog):
             await ctx.send("City not found")
 
 
+    @commands.command()
+    async def join(self, ctx):
+        """Join zeram support server for more help and more info"""
+        await ctx.send("https://discord.gg/Ey5wqJy")
+
+
     @commands.command(name='me')
     @commands.is_owner()
     async def only_me(self, ctx):

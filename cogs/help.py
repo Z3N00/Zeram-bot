@@ -15,7 +15,7 @@ class Help(commands.Cog):
         author = ctx.message.author
         if command is None:
 
-            embed = discord.Embed(description='For more info on a specific command, Use z.help {command}', color=0x00FF00)
+            embed = discord.Embed(description=' Use z.help {command}, For more info on a specific command', color=0x00FF00)
             embed.set_author(name='Command List', icon_url=ctx.author.avatar_url)
 
             basic = f'`ping`  `big`  `hello`'
