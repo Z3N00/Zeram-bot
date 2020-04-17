@@ -33,7 +33,7 @@ class Help(commands.Cog):
             joke = f"`chucknorris`  `geekjoke`  `joke`  `roast`  `insult`"
             embed.add_field(name=f'🎭 **Joke**', value=joke, inline=False)
 
-            tools = f"`avatar`  `userinfo`  `translate`  `define`  `weather`  `search`  `poll`  `invite`  `vote`"
+            tools = f"`avatar`  `userinfo`  `translate`  `define`  `weather`  `search`  `poll`  `invite`  `vote`  `join`"
             embed.add_field(name=f'🔧 **Tools**', value=tools, inline=False)
 
             moderation = f"`clear`  `kick`  `ban`  `unban`  `mute`  `unmute`"
