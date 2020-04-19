@@ -95,6 +95,19 @@ class joke(commands.Cog):
         await ctx.send(reply)
 
 
+    @commands.command(aliases=['trump', 'trumpquote'])
+    async def asktrump(self, ctx, *, question):
+        '''Ask Donald Trump a question!'''
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f'https://api.whatdoestrumpthink.com/api/v1/quotes/personalized?q={question}') as resp:
+                file = await resp.json()
+        quote = file['message']
+        em = discord.Embed(color=discord.Color.green())
+        em.title = "What does Trump say?"
+        em.description = quote
+        em.set_footer(text="Made possible by whatdoestrumpthink.com", icon_url="http://www.stickpng.com/assets/images/5841c17aa6515b1e0ad75aa1.png")
+        await ctx.send(embed=em)
+
 
     @commands.command()
     async def insult(self, ctx, *, member=None):

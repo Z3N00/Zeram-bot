@@ -24,19 +24,19 @@ class Help(commands.Cog):
             game = f'`guess`  `rps`'
             embed.add_field(name=f'🎲 **Games**', value=game, inline=False)
 
-            image = f'`meme`  `gif`  `emoji`  `dog`  `cat`  `fox`  `panda`  `koala`  `redpanda`  `bird`  `bunny`  `lizard`'
+            image = f'`meme`  `gif`  `emoji`  `comic`  `dog`  `cat`  `fox`  `panda`  `koala`  `redpanda`  `bird`  `bunny`  `lizard`'
             embed.add_field(name=f'📸 **Image**', value=image, inline=False)
 
-            fun = f"`flip`  `reverse`  `roll`  `choose`  `repeat`  `8ball`  `giphy`  `ship`  `howgay`  `gender`  `quote`  `horoscope`  `pickupline` `wallpaper` `poem`"
+            fun = f"`flip`  `reverse`  `roll`  `choose`  `repeat`  `8ball`  `giphy`  `ship`  `howgay`  `gender`  `quote`  `horoscope`  `numberfact`  `pickupline` `wallpaper` `poem`"
             embed.add_field(name=f'⚽ **Fun**', value=fun, inline=False)
 
-            joke = f"`chucknorris`  `geekjoke`  `joke`  `roast`  `insult`"
+            joke = f"`chucknorris`  `geekjoke`  `joke`  `roast`  `asktrump`  `insult`"
             embed.add_field(name=f'🎭 **Joke**', value=joke, inline=False)
 
-            tools = f"`avatar`  `userinfo`  `translate`  `define`  `weather`  `search`  `poll`  `invite`  `vote`  `join`"
+            tools = f"`avatar`  `userinfo`  `serverinfo`  `translate`  `define`  `weather`  `search`  `poll`  `datetime`  `invite`  `vote`  `join`  `suggest`"
             embed.add_field(name=f'🔧 **Tools**', value=tools, inline=False)
 
-            moderation = f"`clear`  `kick`  `ban`  `unban`  `mute`  `unmute`"
+            moderation = f"`clear`  `kick`  `ban`  `unban`  `mute`  `unmute`  `warn`"
             embed.add_field(name=f'🔨 **Moderation**', value=moderation, inline=False)
 
             actions = f"`cuddle`  `hug`  `kiss`  `lick`  `nom`  `pat`  `poke`  `slap`  `stare`  `highfive` `bite` `greet`  `punch`  `handholding`  `tickle`  `kill` `hold` `wave` `boop`"

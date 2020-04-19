@@ -32,3 +32,4 @@ colorlog
 wikipedia
 giphy_client
 corona_api
+pytz

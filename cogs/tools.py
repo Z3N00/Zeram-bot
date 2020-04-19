@@ -5,7 +5,7 @@ import urbandict
 import wikipedia
 from googletrans import Translator
 import requests
-
+import pytz
 class tools(commands.Cog):
     """Useful Commands"""
     def __init__(self, bot):
@@ -154,6 +154,27 @@ class tools(commands.Cog):
         await ctx.send(embed=embed)
 
 
+    @commands.command(aliases=['si', 'server'])
+    async def serverinfo(self, ctx):
+        '''Get server info'''
+        guild = ctx.guild
+        guild_age = (ctx.message.created_at - guild.created_at).days
+        created_at = f"Server created on {guild.created_at.strftime('%b %d %Y at %H:%M')}. That\'s over {guild_age} days ago!"
+        color = discord.Color.green()
+
+        em = discord.Embed(description=created_at, color=color)
+        em.add_field(name='Online Members', value=len({m.id for m in guild.members if m.status is not discord.Status.offline}))
+        em.add_field(name='Total Members', value=len(guild.members))
+        em.add_field(name='Text Channels', value=len(guild.text_channels))
+        em.add_field(name='Voice Channels', value=len(guild.voice_channels))
+        em.add_field(name='Roles', value=len(guild.roles))
+        em.add_field(name='Owner', value=guild.owner)
+
+        em.set_thumbnail(url=None or guild.icon_url)
+        em.set_author(name=guild.name, icon_url=None or guild.icon_url)
+        await ctx.send(embed=em)
+
+
 
     @commands.command(aliases=['w'])
     async def weather(self, ctx, city_name):
@@ -195,12 +216,43 @@ class tools(commands.Cog):
         await ctx.send("https://discord.gg/Ey5wqJy")
 
 
-    @commands.command(name='me')
+    @commands.command()
+    async def datetime(self, ctx, tz=None):
+        """Get the current date and time for a time zone or UTC."""
+        now = datetime.datetime.now(tz=pytz.UTC)
+        all_tz = 'https://github.com/cree-py/RemixBot/blob/master/data/timezones.json'
+        em = discord.Embed(color=discord.Color.red())
+        if tz:
+            try:
+                now = now.astimezone(pytz.timezone(tz))
+            except:
+                em.title = "Invalid timezone"
+                em.description = f'Please take a look at the [list]({all_tz}) of timezones.'
+                return await ctx.send(embed=em)
+        em.description = f'It is currently {now:%A, %B %d, %Y} at {now:%I:%M:%S %p}.'
+        await ctx.send(embed=em)
+
+    @commands.command()
+    async def suggest(self, ctx, *, idea: str):
+        """Suggest an idea. Your idea will be sent to the developer server."""
+        suggest = self.bot.get_channel(700271848050655252)
+        em = discord.Embed(color=discord.Color.green())
+        em.title = f"{ctx.author} | User ID: {ctx.author.id}"
+        em.description = idea
+        em.set_footer(text=f"From {ctx.author.guild} | Server ID: {ctx.author.guild.id}", icon_url=ctx.guild.icon_url)
+        await suggest.send(embed=em)
+        await ctx.send("Your idea has been successfully sent to support server. Thank you!")
+
+
+
+
+
+    @commands.command(name='me', aliases=['owner'])
     @commands.is_owner()
     async def only_me(self, ctx):
         """A simple command which only responds to the owner of the bot."""
 
-        await ctx.send(f'Hello {ctx.author.mention}. This command can only be used by you!!')
+        await ctx.send(f"Hello {ctx.author.mention}, You're my owner!!")
 
 
 

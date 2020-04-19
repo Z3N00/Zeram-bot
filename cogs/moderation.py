@@ -104,6 +104,27 @@ class Moderation(commands.Cog):
             await ctx.channel.send(f'{ctx.author.mention} You have no permission')
 
 
+    @commands.command()
+    @commands.has_permissions(kick_members=True)
+    async def warn(self, ctx, user: discord.Member, *, reason: str):
+        '''Warn a member via DMs'''
+        warning = f'You have been warned in **{ctx.guild}** by **{ctx.author}** for {reason}'
+        if not reason:
+            warning = f'You have been warned in **{ctx.guild}** by **{ctx.author}**'
+        try:
+            await user.send(warning)
+        except discord.Forbidden:
+            return await ctx.send('The user has disabled DMs for this guild or blocked the bot.')
+        await ctx.send(f'**{user}** has been **warned**')
+
+    @warn.error
+    async def warn_error(self, ctx, error):
+        if isinstance(error, commands.CheckFailure):
+            await ctx.channel.send(f'{ctx.author.mention} You have no permission for this command')
+
+
+
+
 
 
 def setup(bot):

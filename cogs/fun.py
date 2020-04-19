@@ -278,6 +278,23 @@ class fun(commands.Cog):
         await ctx.send(embed=embed)
 
 
+
+    @commands.command(aliases=['number'])
+    async def numberfact(self, ctx, number: int):
+        '''Get a fact about a number.'''
+        if not number:
+            await ctx.send(f'Usage: `{ctx.prefix}numberfact <number>`')
+            return
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(f'http://numbersapi.com/{number}?json') as resp:
+                    file = await resp.json()
+                    fact = file['text']
+                    await ctx.send(f"**Did you know?**\n*{fact}*")
+        except KeyError:
+            await ctx.send("No facts are available for that number.")
+
+
 def setup(bot):
     bot.add_cog(fun(bot))
     print("fun is loaded")
