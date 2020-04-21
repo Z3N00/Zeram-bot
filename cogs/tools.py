@@ -6,6 +6,8 @@ import wikipedia
 from googletrans import Translator
 import requests
 import pytz
+import datetime
+import aiohttp
 class tools(commands.Cog):
     """Useful Commands"""
     def __init__(self, bot):
@@ -216,7 +218,7 @@ class tools(commands.Cog):
         await ctx.send("https://discord.gg/Ey5wqJy")
 
 
-    @commands.command()
+    @commands.command(aliases=['dt'])
     async def datetime(self, ctx, tz=None):
         """Get the current date and time for a time zone or UTC."""
         now = datetime.datetime.now(tz=pytz.UTC)

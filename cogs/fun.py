@@ -8,6 +8,7 @@ from giphy_client.rest import ApiException
 from brainyquote import pybrainyquote
 import pyaztro
 from bs4 import BeautifulSoup
+import aiohttp
 
 class fun(commands.Cog):
     """Some fun commands"""

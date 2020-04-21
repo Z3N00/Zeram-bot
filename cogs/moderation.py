@@ -106,7 +106,7 @@ class Moderation(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
-    async def warn(self, ctx, user: discord.Member, *, reason: str):
+    async def warn(self, ctx, user: discord.Member, *, reason: str = None):
         '''Warn a member via DMs'''
         warning = f'You have been warned in **{ctx.guild}** by **{ctx.author}** for {reason}'
         if not reason:

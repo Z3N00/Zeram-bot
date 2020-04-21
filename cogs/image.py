@@ -6,7 +6,7 @@ import asyncio
 import random
 import requests, json
 import datetime
-
+import aiohttp
 
 
 class Image(commands.Cog):
@@ -152,7 +152,7 @@ class Image(commands.Cog):
         embed.set_image(url=img_url)
         embed.set_footer(text=ctx.author)
         await ctx.send(embed=embed)
-        
+
 
     @commands.command(aliases=['xkcd', 'comic'])
     async def randomcomic(self, ctx):
