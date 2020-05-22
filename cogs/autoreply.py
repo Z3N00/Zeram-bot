@@ -84,7 +84,7 @@ class Autoreply(commands.Cog):
         if str(channel.guild.id) in name:
             await ctx.send(f'<#{name[str(channel.guild.id)]}> is binded with zeram autoreply')
         else:
-            await ctx.send("No channel is binded with the chat bot! Do z.bind #channel_name for binding")
+            await ctx.send("No channel found! Do z.bind #channel_name for binding")
 
 
 def setup(bot):
