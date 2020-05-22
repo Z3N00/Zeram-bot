@@ -46,7 +46,7 @@ class Autoreply(commands.Cog):
     @bind.error
     async def error(self, ctx, error):
         if isinstance(error, commands.CheckFailure):
-            await ctx.channel.send(f'{ctx.author.mention} You need manage server permission to access this command')
+            await ctx.channel.send(f'{ctx.author.mention} You need manage channel permission to access this command')
 
 
     @commands.Cog.listener()
