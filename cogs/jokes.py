@@ -105,7 +105,7 @@ class joke(commands.Cog):
         em = discord.Embed(color=discord.Color.green())
         em.title = "What does Trump say?"
         em.description = quote
-        em.set_footer(text="Made possible by whatdoestrumpthink.com", icon_url="http://www.stickpng.com/assets/images/5841c17aa6515b1e0ad75aa1.png")
+        em.set_footer(text="Made possible by whatdoestrumpthink.com", icon_url="https://images.unsplash.com/photo-1580128660010-fd027e1e587a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyNjEzMn0")
         await ctx.send(embed=em)
 
 

@@ -24,10 +24,13 @@ class Help(commands.Cog):
             game = f'`guess`  `rps`'
             embed.add_field(name=f'🎲 **Games**', value=game, inline=False)
 
+            autoreply = f'`bind`  `unbind`  `channel`'
+            embed.add_field(name=f'🤖 **Chat Bot**', value=autoreply, inline=False)
+
             image = f'`meme`  `gif`  `emoji`  `comic`  `dog`  `cat`  `fox`  `panda`  `koala`  `redpanda`  `bird`  `bunny`  `lizard`'
             embed.add_field(name=f'📸 **Image**', value=image, inline=False)
 
-            fun = f"`flip`  `reverse`  `roll`  `choose`  `repeat`  `8ball`  `giphy`  `ship`  `howgay`  `gender`  `quote`  `horoscope`  `numberfact`  `pickupline` `wallpaper` `poem`"
+            fun = f"`flip`  `reverse`  `roll`  `choose`  `repeat`  `8ball`  `giphy`  `ship`  `howgay`  `gender`  `quote`  `horoscope`  `numberfact`  `pickupline`  `wallpaper`  `poem`"
             embed.add_field(name=f'⚽ **Fun**', value=fun, inline=False)
 
             joke = f"`chucknorris`  `geekjoke`  `joke`  `roast`  `asktrump`  `insult`"
@@ -39,10 +42,10 @@ class Help(commands.Cog):
             moderation = f"`clear`  `kick`  `ban`  `unban`  `mute`  `unmute`  `warn`"
             embed.add_field(name=f'🔨 **Moderation**', value=moderation, inline=False)
 
-            actions = f"`cuddle`  `hug`  `kiss`  `lick`  `nom`  `pat`  `poke`  `slap`  `stare`  `highfive` `bite` `greet`  `punch`  `handholding`  `tickle`  `kill` `hold` `wave` `boop`"
+            actions = f"`cuddle`  `hug`  `kiss`  `lick`  `nom`  `pat`  `poke`  `slap`  `stare`  `highfive` `bite` `greet`  `punch`  `handholding`  `tickle`  `kill`  `hold`  `wave`  `boop`"
             embed.add_field(name=f'🤗 **Actions**', value=actions, inline=False)
 
-            emotes = f"`blush`  `dance`  `lewd`  `pout`  `shrug`  `sleepy`  `smile`  `smug`  `thumbsup`  `wag` `thinking` `triggered`  `teehee`  `deredere`  `scoff`  `happy` `grin`"
+            emotes = f"`blush`  `dance`  `lewd`  `pout`  `shrug`  `sleepy`  `smile`  `smug`  `thumbsup`  `wag` `thinking` `triggered`  `teehee`  `deredere`  `scoff`  `happy`  `grin`"
             embed.add_field(name=f'😁 **Emotes**', value=emotes, inline=False)
 
             corona = f'`coronavirus`  `cvlb`'
