@@ -12,6 +12,7 @@ class Autoreply(commands.Cog):
         self.bot = bot
 
     @commands.command()
+    @commands.has_permissions(manage_channels=True)
     async def unbind(self, ctx, channel:discord.TextChannel):
         """Unbind the channel from auto reply"""
         obj  = json.load(open("channel.json"))
@@ -29,6 +30,7 @@ class Autoreply(commands.Cog):
         )
 
     @commands.command()
+    @commands.has_permissions(manage_channels=True)
     async def bind(self, ctx, channel:discord.TextChannel):
         """Bind the channel for auto reply"""
         with open("channel.json", "r") as f:
@@ -40,6 +42,13 @@ class Autoreply(commands.Cog):
         with open("channel.json", "w") as f:
             json.dump(data, f, indent=4)
 
+    @unbind.error
+    @bind.error
+    async def error(self, ctx, error):
+        if isinstance(error, commands.CheckFailure):
+            await ctx.channel.send(f'{ctx.author.mention} You need manage server permission to access this command')
+
+
     @commands.Cog.listener()
     async def on_message(self, message):
         channel = message.channel
@@ -50,7 +59,7 @@ class Autoreply(commands.Cog):
                 async with channel.typing():
                     try:
                         input = re.sub(f'<@{str(message.author.id)}>', '', message.content).strip()
-                        params = {'botid': 'c867aeea4e345ad2', 'custid': message.author.id, 'input': input or 'Hello'}
+                        params = {'botid': 'b0a6a41a5e345c23', 'custid': message.author.id, 'input': input or 'Hello'}
                         async with aiohttp.ClientSession(headers = {'User-agent': 'Zeram'}) as bot:
                             async with bot.get('https://www.pandorabots.com/pandora/talk-xml', params=params) as resp:
                                 if resp.status == 200:
