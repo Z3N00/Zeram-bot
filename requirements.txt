@@ -31,7 +31,7 @@ pip
 colorlog
 wikipedia
 giphy_client
-corona_api
+git+https://github.com/apex2504/python-corona-api
 pytz
 datetime
 pysqlite3
