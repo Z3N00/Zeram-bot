@@ -31,7 +31,7 @@ pip
 colorlog
 wikipedia
 giphy_client
-# corona-api
+corona_api
 pytz
 datetime
 pysqlite3
