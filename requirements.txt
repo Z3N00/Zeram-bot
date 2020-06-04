@@ -31,6 +31,6 @@ pip
 colorlog
 wikipedia
 giphy_client
-corona-api
+# corona-api
 pytz
 datetime

@@ -48,8 +48,8 @@ class Help(commands.Cog):
             emotes = f"`blush`  `dance`  `lewd`  `pout`  `shrug`  `sleepy`  `smile`  `smug`  `thumbsup`  `wag` `thinking` `triggered`  `teehee`  `deredere`  `scoff`  `happy`  `grin`"
             embed.add_field(name=f'😁 **Emotes**', value=emotes, inline=False)
 
-            corona = f'`coronavirus`  `cvlb`'
-            embed.add_field(name=f'😷 **Corona Stats**', value=corona, inline=False)
+            # corona = f'`coronavirus`  `cvlb`'
+            # embed.add_field(name=f'😷 **Corona Stats**', value=corona, inline=False)
 
             nsfw = f'`pgif`  `boobs`  `ass`'
             embed.add_field(name=f'💦 **NSFW**', value=nsfw, inline=False)
