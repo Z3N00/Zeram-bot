@@ -34,4 +34,4 @@ giphy_client
 # corona-api
 pytz
 datetime
-sqlite3
+pysqlite3 
