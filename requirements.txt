@@ -13,7 +13,7 @@ certifi==2018.8.24
 cffi==1.12.3
 chardet==3.0.4
 clear==1.0.1
-discord.py==1.2.5
+discord.py==1.3.3
 goodlogging==1.0.1
 idna==2.7
 multidict==4.5.2
@@ -34,3 +34,4 @@ giphy_client
 corona_api
 pytz
 datetime
+sqlite3

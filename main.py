@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import sys, traceback
-
+import sqlite3
 token = 'MJ-Wjxz7u4NRQRJcQsTVG9Ff5hA.g8FAVX.zYTN0UDM4YjM2MzMxEjN3AjN'
 initial_extensions = ['cogs.basic',
                       'cogs.actions',
@@ -28,6 +28,14 @@ if __name__ == '__main__':
             traceback.print_exc()
 @bot.event
 async def on_ready():
+    # db = sqlite3.connect('main.sqlite')
+    # cursor = db.cursor()
+    # cursor.execute('''
+    #    CREATE TABLE IF NOT EXISTS main(
+    #    guild_id TEXT,
+    #    channel_id TEXT
+    #    )
+    #    ''')
     guild = len(bot.guilds)
     activity = discord.Activity(name='z.help | ' + str(guild) + ' servers', type=discord.ActivityType.listening)
     await bot.change_presence(activity=activity)
