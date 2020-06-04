@@ -6,7 +6,7 @@ pyjokes
 git+https://github.com/Rapptz/discord.py
 discord
 asyncio
-aiohttp
+aiohttp==3.6.2
 async-timeout==3.0.1
 attrs==19.1.0
 certifi==2018.8.24
@@ -31,6 +31,6 @@ pip
 colorlog
 wikipedia
 giphy_client
-corona_api==0.9.0
+git+https://github.com/apex2504/python-corona-api
 pytz
 datetime
