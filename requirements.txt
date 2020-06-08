@@ -34,4 +34,4 @@ giphy_client
 git+https://github.com/apex2504/python-corona-api
 pytz
 datetime
-pysqlite3
+mysql-connector-python
