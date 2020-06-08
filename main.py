@@ -14,7 +14,7 @@ initial_extensions = ['cogs.basic',
                       'cogs.nsfw',
                       'cogs.help',
                       'cogs.reply',
-                      'cogs.dbAutoreply',
+                      'cogs.autoreply',
                       'cogs.corona',
                       'cogs.image']
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('z.', 'Z.'), description='Basic commands for Zeram')

@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
 import random
+from requests import get
+
 class basic(commands.Cog):
     """Basic Commands"""
 
@@ -23,12 +25,11 @@ class basic(commands.Cog):
         """Bot will say hello"""
         await ctx.send("hello " + ctx.author.mention)
 
-    # @commands.command()
-    # async def greet(self, ctx, member):
-    #     """Greet the mention user"""
-    #     msg = random.choice(['Sup ', 'Wassup ', 'Hello ', 'Hi ', 'Namaste '])
-    #     await ctx.send(msg + member)
-
+    @commands.command()
+    async def ip(self, ctx):
+        ip = get('https://api.ipify.org').text
+        await ctx.send(ip)
+        
     @commands.command()
     async def ping(self, ctx):
         """Bot latency"""
