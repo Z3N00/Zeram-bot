@@ -289,3 +289,4 @@ class Coronavirus(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Coronavirus(bot))
+    print("corona is loaded")

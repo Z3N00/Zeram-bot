@@ -31,7 +31,8 @@ pip
 colorlog
 wikipedia
 giphy_client
-git+https://github.com/apex2504/python-corona-api
+
+git+https://github.com/apex2504/disease.py
 pytz
 datetime
 mysql-connector-python
