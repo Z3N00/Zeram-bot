@@ -47,7 +47,7 @@ class tools(commands.Cog):
     async def define(self, ctx, *, term):
         """Define any word"""
         information = urbandict.define(term)
-        data = information[0]
+        data = information[2]
         embed = discord.Embed(description=data['def'] + "\n", color=discord.Colour.blue())
         embed.set_author(name='Definition of ' + term, icon_url=ctx.author.avatar_url)
         embed.add_field(name='Example', value='```' + data['example'] + '```', inline=False)
