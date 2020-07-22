@@ -4,7 +4,7 @@ urbandict
 googletrans
 pyjokes
 git+https://github.com/Rapptz/discord.py
-discord
+discord.py==1.3.4
 asyncio
 aiohttp==3.6.2
 async-timeout==3.0.1
