@@ -18,8 +18,7 @@ class joke(commands.Cog):
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
         list = ['https://www.reddit.com/r/memes/hot.json',
-                'https://www.reddit.com/r/dankmemes/new.json?sort=hot',
-                'https://www.reddit.com/r/dank_meme/hot.json']
+                'https://www.reddit.com/r/dankmemes/new.json?sort=hot']
         url = random.choice(list)
         async with aiohttp.ClientSession() as cs:
             async with cs.get(url) as r:
