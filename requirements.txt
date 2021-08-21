@@ -9,8 +9,8 @@ asyncio
 aiohttp==3.6.2
 async-timeout==3.0.1
 attrs==19.1.0
-certifi==2018.8.24
-cffi==1.12.3
+certifi
+cffi
 chardet==3.0.4
 clear==1.0.1
 
@@ -36,3 +36,4 @@ git+https://github.com/apex2504/disease.py
 pytz
 datetime
 mysql-connector-python
+pyrebase
