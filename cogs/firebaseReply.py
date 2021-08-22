@@ -74,7 +74,7 @@ class firebaseReply(commands.Cog):
 
         obj = servers.val()
 
-        if (guild_id in obj.keys() and channel_id == obj[guild_id][guild_id]):
+        if ((guild_id in obj[guild_id]) and (channel_id == obj[guild_id][guild_id])):
             if not message.author.bot and self.bot.user.id:
                 async with channel.typing():
                     try:
