@@ -39,7 +39,7 @@ class GambleCog(commands.Cog):
         self.bot = bot
 
     
-    @commands.command()
+    @commands.command(aliases=['enter'])
     async def entergamble(self, ctx):
 
         user_id = str(ctx.author.id)
@@ -67,7 +67,7 @@ class GambleCog(commands.Cog):
             await ctx.send(f"{ctx.author.mention} First Please use command to enter in our gambling arena")
             return
         balance = userMoney[user_id]["Money"]
-        embed = discord.Embed(description=f"You currently have : {balance} ")
+        embed = discord.Embed(description=f"💵|{ctx.author.name}, you currently have : __{balance}__ zurrency")
         await ctx.send(embed=embed)
 
     @commands.command(aliases=['cf'])
@@ -82,13 +82,13 @@ class GambleCog(commands.Cog):
         result = random.choice(coinflips)
 
         if(user_id not in userMoney.keys()):
-            await ctx.send(f"{ctx.author.mention} First Please use command to enter in our gambling arena")
+            await ctx.send(f"{ctx.author.mention} First use the command `z.enter` to enter in our gambling club")
             return
 
         if(amount == "all"):
             amount = balance
 
-        if(balance<amount):
+        if(int(balance)<int(amount)):
             await ctx.send(f"Poor {ctx.author.mention}!! You don't have a sufficient balance")
             return
 
@@ -98,18 +98,18 @@ class GambleCog(commands.Cog):
             choice = 'head'
         elif(choice == 't'):
             choice = 'tail'
+        await ctx.send(f"{ctx.author.name} spent 💵{amount} and chose {choice}")
+        message = await ctx.send(f"The coin spins...")
 
-        message = await ctx.send(f"Coin flips for {choice} ")
-
-        await asyncio.sleep(5)
+        await asyncio.sleep(3)
 
         if(result == choice):
             winAmount = int(amount) * 2
-            await message.edit(content = f"Its {result}!! You won {winAmount}")
+            await message.edit(content = f"The coin spins...🪙 and You won 💵{winAmount}")
             new_balance = int(balance) + int(amount)
             db.child("Users").child(user_id).update({"Money": str(new_balance)})
         else:
-            await message.edit(content=f"Its {result}!! You lose")
+            await message.edit(content=f"The coin spins...🪙 and you lost it all...")
             loseAmount = int(balance) - int(amount)
             balance = str(loseAmount)
             db.child("Users").child(user_id).update({"Money": balance})
@@ -122,7 +122,7 @@ class GambleCog(commands.Cog):
         balance = userMoney[user_id]["Money"]
         receiver_balance = userMoney[str(receiver.id)]["Money"]
         if(str(receiver.id) not in userMoney.keys()):
-            await ctx.send(f"Ask {receiver.mention} to enter in our gambling arena")
+            await ctx.send(f"Ask {receiver.mention} to enter in our gambling club")
         else:
             new_balance_giver = int(balance) - amount
 
@@ -132,7 +132,7 @@ class GambleCog(commands.Cog):
 
             db.child("Users").child(str(receiver.id)).update({"Money": str(new_balance_receiver)})
 
-            await ctx.send(f"{ctx.author.name} give {amount} to {receiver.mention}")
+            await ctx.send(f"💵|{ctx.author.name} sent {amount} zurrency to {receiver.mention}")
 
 
     # @commands.command()
