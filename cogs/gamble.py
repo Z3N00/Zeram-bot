@@ -101,14 +101,13 @@ class GambleCog(commands.Cog):
 
         message = await ctx.send(f"Coin flips for {choice} ")
 
-        await asyncio.sleep(2)
+        await asyncio.sleep(5)
 
         if(result == choice):
             winAmount = int(amount) * 2
             await message.edit(content = f"Its {result}!! You won {winAmount}")
-            new_balance = int(balance) + amount
-            balance = str(new_balance)
-            db.child("Users").child(user_id).update({"Money": balance})
+            new_balance = int(balance) + int(amount)
+            db.child("Users").child(user_id).update({"Money": str(new_balance)})
         else:
             await message.edit(content=f"Its {result}!! You lose")
             loseAmount = int(balance) - int(amount)
@@ -133,14 +132,14 @@ class GambleCog(commands.Cog):
 
             db.child("Users").child(str(receiver.id)).update({"Money": str(new_balance_receiver)})
 
-            await ctx.send(f"{ctx.author.mention} give {amount} to {receiver.mention}")
+            await ctx.send(f"{ctx.author.name} give {amount} to {receiver.mention}")
 
 
-    @commands.command()
-    async def test(self, ctx, user:discord.Member):
-        await ctx.send(f"user name: {ctx.author}")
-        await ctx.send(f"User id: {ctx.author.id}")
-        await ctx.send(f"member id: {user.id}")
+    # @commands.command()
+    # async def test(self, ctx, user:discord.Member):
+    #     await ctx.send(f"user name: {ctx.author}")
+    #     await ctx.send(f"User id: {ctx.author.id}")
+    #     await ctx.send(f"member id: {user.id}")
 
 
     # @commands.command()
