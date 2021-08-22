@@ -43,15 +43,20 @@ class GambleCog(commands.Cog):
     async def entergamble(self, ctx):
 
         user_id = str(ctx.author.id)
-        
+        user = db.child("Users").get()
+        userMoney = user.val()
+
         data = {
             "UserId" : user_id,
             "Name" : str(ctx.author),
             "Money" : "0"
         }
-        
-        db.child("Users").child(f"{user_id}").set(data)
-        await ctx.send(f"Welcome to our gambling club {ctx.author.mention}")
+
+        if(user_id not in userMoney.keys()):
+            db.child("Users").child(f"{user_id}").set(data)
+            await ctx.send(f"Welcome to our gambling club {ctx.author.mention}")
+        else:
+            await ctx.send("You're already in our gambling group")
 
     @commands.command(aliases=['bal', 'money'])
     async def balance(self, ctx):
