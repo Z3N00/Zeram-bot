@@ -64,10 +64,10 @@ class GambleCog(commands.Cog):
         user = db.child("Users").get()
         userMoney = user.val()
         if(user_id not in userMoney.keys()):
-            await ctx.send(f"{ctx.author.mention} First Please use command to enter in our gambling arena")
+            await ctx.send(f"{ctx.author.mention} First Please use command `z.enter` to enter in our gambling club")
             return
         balance = userMoney[user_id]["Money"]
-        embed = discord.Embed(description=f"💵|{ctx.author.name}, you currently have : __{balance}__ zurrency")
+        embed = discord.Embed(description=f"💵 | {ctx.author.name}, you currently have : __**{str(balance)}**__ zenoency")
         await ctx.send(embed=embed)
 
     @commands.command(aliases=['cf'])
@@ -98,14 +98,14 @@ class GambleCog(commands.Cog):
             choice = 'head'
         elif(choice == 't'):
             choice = 'tail'
-        await ctx.send(f"{ctx.author.name} spent 💵{amount} and chose {choice}")
+        await ctx.send(f"{ctx.author.name} spent 💵 {amount} and chose {choice}")
         message = await ctx.send(f"The coin spins...")
 
         await asyncio.sleep(3)
 
         if(result == choice):
             winAmount = int(amount) * 2
-            await message.edit(content = f"The coin spins...🪙 and You won 💵{winAmount}")
+            await message.edit(content = f"The coin spins...🪙 and You won 💵 {winAmount}")
             new_balance = int(balance) + int(amount)
             db.child("Users").child(user_id).update({"Money": str(new_balance)})
         else:
@@ -132,7 +132,7 @@ class GambleCog(commands.Cog):
 
             db.child("Users").child(str(receiver.id)).update({"Money": str(new_balance_receiver)})
 
-            await ctx.send(f"💵|{ctx.author.name} sent {amount} zurrency to {receiver.mention}")
+            await ctx.send(f"💵 | {ctx.author.name} sent {amount} zurrency to {receiver.mention}")
 
 
     # @commands.command()
