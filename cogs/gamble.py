@@ -58,6 +58,9 @@ class GambleCog(commands.Cog):
         user_id = str(ctx.author.id)
         user = db.child("Users").get()
         userMoney = user.val()
+        if(user_id not in userMoney.keys()):
+            await ctx.send(f"{ctx.author.mention} First Please use command to enter in our gambling arena")
+            return
         balance = userMoney[user_id]["Money"]
         embed = discord.Embed(description=f"You currently have : {balance} ")
         await ctx.send(embed=embed)
@@ -72,6 +75,10 @@ class GambleCog(commands.Cog):
 
         coinflips = ['head', 'tail']
         result = random.choice(coinflips)
+
+        if(user_id not in userMoney.keys()):
+            await ctx.send(f"{ctx.author.mention} First Please use command to enter in our gambling arena")
+            return
 
         if(amount == "all"):
             amount = balance
