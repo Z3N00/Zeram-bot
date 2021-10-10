@@ -2,6 +2,7 @@ import asyncio
 from random import randrange
 import discord
 from discord.ext import commands
+from discord.ext.commands.core import command
 from pyasn1.type.univ import Null
 import pyrebase
 import random
@@ -154,7 +155,9 @@ class GambleCog(commands.Cog):
 
 
     @commands.command()
+    @commands.cooldown(1, 15, commands.BucketType.user)
     async def steal(self, ctx, member:discord.User):
+
         """Steal money from the user"""
         luck = [0, 1]
         chance = random.choice(luck)
@@ -165,7 +168,10 @@ class GambleCog(commands.Cog):
         user = db.child("Users").get()
         userMoney = user.val()
         
-        
+        if(stealerId == userId):
+            await ctx.send("You can not steal from yourself. Stupid...")
+            return
+
         if(stealerId not in userMoney.keys()):
             await ctx.send(f"{ctx.author.mention} First use the command `z.enter` to enter in our gambling club")
             return
@@ -181,18 +187,22 @@ class GambleCog(commands.Cog):
                 
             else:
                 stealPercent = random.randint(1, 5)
-                stealAmount = (int(getUserMoney)*(stealPercent*10)/100)
-
+                stealAmount = int(int(getUserMoney)*(stealPercent*10)/100)
+                
                 if(chance == 1):    
-                    newUserMoney = int(getUserMoney) - stealAmount
-                    newStealerMoney = int(getStealerMoney) + stealAmount
+                    newUserMoney = int(int(getUserMoney) - stealAmount)
+                    newStealerMoney = int(int(getStealerMoney) + stealAmount)
                     db.child("Users").child(stealerId).update({"Money": str(newStealerMoney)})
                     db.child("Users").child(userId).update({"Money": str(newUserMoney)})
-                    await ctx.send(f"You succesfully stole {stealAmount} zenoency from {user.name}.")
+                    await ctx.send(f"You succesfully stole {stealAmount} zenoency from {member.mention}.")
                 else:
                     newStealerMoney = int(getStealerMoney) - stealAmount
                     db.child("Users").child(stealerId).update({"Money": str(newStealerMoney)})
-                    await ctx.send(f"Oops!! Police caught you. As a penalty you pay {stealAmount} zenoency to the police")
+                    await ctx.send(f"Police caught you. You bribe {int(stealAmount)} zenoency to the police ")
+    @steal.error
+    async def steal_error(self, ctx, error):
+        if isinstance(error, commands.CommandOnCooldown):
+            await ctx.send(f'This command is on cooldown, you can use it in {round(error.retry_after, 2)} sec', delete_after=round(error.retry_after, 2))
 
 
 
