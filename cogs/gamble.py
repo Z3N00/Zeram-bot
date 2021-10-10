@@ -188,7 +188,7 @@ class GambleCog(commands.Cog):
             else:
                 stealPercent = random.randint(1, 5)
                 stealAmount = int(int(getUserMoney)*(stealPercent*10)/100)
-                
+                bribeAmount = int(int(getStealerMoney)*(stealPercent*10)/100)
                 if(chance == 1):    
                     newUserMoney = int(int(getUserMoney) - stealAmount)
                     newStealerMoney = int(int(getStealerMoney) + stealAmount)
@@ -196,9 +196,9 @@ class GambleCog(commands.Cog):
                     db.child("Users").child(userId).update({"Money": str(newUserMoney)})
                     await ctx.send(f"You succesfully stole {stealAmount} zenoency from {member.mention}.")
                 else:
-                    newStealerMoney = int(getStealerMoney) - stealAmount
+                    newStealerMoney = int(getStealerMoney) - bribeAmount
                     db.child("Users").child(stealerId).update({"Money": str(newStealerMoney)})
-                    await ctx.send(f"Police caught you. You bribe {int(stealAmount)} zenoency to the police ")
+                    await ctx.send(f"Police caught you. You bribe {int(bribeAmount)} zenoency to the police ")
     @steal.error
     async def steal_error(self, ctx, error):
         if isinstance(error, commands.CommandOnCooldown):
