@@ -12,6 +12,7 @@ class joke(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+
     @commands.command()
     async def meme(self, ctx):
         """Choose some random meme"""
@@ -20,11 +21,17 @@ class joke(commands.Cog):
         list = ['https://www.reddit.com/r/memes/hot.json',
                 'https://www.reddit.com/r/dankmemes/new.json?sort=hot']
         url = random.choice(list)
-        async with aiohttp.ClientSession() as cs:
-            async with cs.get(url) as r:
-                res = await r.json()
-                embed.set_image(url=res['data']['children'][random.randint(0, 25)]['data']['url'])
-                await ctx.send(embed=embed)
+        
+        r = requests.get(url)
+        if r.status_code != 204:
+            content = json.loads(r.content)
+            await ctx.send(url)
+
+            result_url = content['data']['children'][random.randint(1, 24)]['data']['url']
+            
+            embed.set_image(url=result_url)
+            await ctx.send(embed=embed)
+
 
     @commands.command()
     async def gif(self, ctx, *, search_term):

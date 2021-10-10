@@ -38,7 +38,7 @@ class actions(commands.Cog):
         result = await self.action('anime cuddle')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} cuddle {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} cuddle {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -49,7 +49,7 @@ class actions(commands.Cog):
         result = await self.action('anime hug')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} hugs {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} hugs {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -59,7 +59,7 @@ class actions(commands.Cog):
         result = await self.action('anime kiss')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} kissed {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} kissed {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -69,7 +69,7 @@ class actions(commands.Cog):
         result = await self.action('anime lick')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} licks {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} licks {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -79,7 +79,7 @@ class actions(commands.Cog):
         result = await self.action('anime nom')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} noms on {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} noms on {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -89,7 +89,7 @@ class actions(commands.Cog):
         result = await self.action('anime pat')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} pats {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} pats {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -99,7 +99,7 @@ class actions(commands.Cog):
         result = await self.action('anime poke')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} pokes {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} pokes {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -109,7 +109,7 @@ class actions(commands.Cog):
         result = await self.action('anime slap')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} slaps {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} slaps {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -119,7 +119,7 @@ class actions(commands.Cog):
         result = await self.action('anime stare')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} stares at {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} stares at {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -129,7 +129,7 @@ class actions(commands.Cog):
         result = await self.action('anime highfive')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} highfives {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} highfives {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -139,7 +139,7 @@ class actions(commands.Cog):
         result = await self.action('anime bite')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} bite on {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} bite on {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -149,7 +149,7 @@ class actions(commands.Cog):
         result = await self.action('anime hi')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} says hi to {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} says hi to {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -159,7 +159,7 @@ class actions(commands.Cog):
         result = await self.action('anime punch')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} punch {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} punch {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -169,7 +169,7 @@ class actions(commands.Cog):
         result = await self.action('anime hold hands')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f"{ctx.author.name} hold {member.name}'s' hand", icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f"{ctx.author.name} hold {member.name}'s' hand", icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -179,7 +179,7 @@ class actions(commands.Cog):
         result = await self.action('anime tickle')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} tickle {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} tickle {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -189,7 +189,7 @@ class actions(commands.Cog):
         result = await self.action('anime kill')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} killed {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} killed {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -199,7 +199,7 @@ class actions(commands.Cog):
         result = await self.action('anime hold')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f"{ctx.author.name} grabs {member.name}'s hand'", icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f"{ctx.author.name} grabs {member.name}'s hand'", icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -209,7 +209,7 @@ class actions(commands.Cog):
         result = await self.action('anime wave')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} waves to {member.name}', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} waves to {member.name}', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -219,7 +219,7 @@ class actions(commands.Cog):
         result = await self.action('anime boop')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} boops {member.name} ;)', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} boops {member.name} ;)', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 

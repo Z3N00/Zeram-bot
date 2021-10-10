@@ -41,7 +41,7 @@ class GambleCog(commands.Cog):
     
     @commands.command(aliases=['enter'])
     async def entergamble(self, ctx):
-
+        """To enter in gambling arena"""
         user_id = str(ctx.author.id)
         user = db.child("Users").get()
         userMoney = user.val()
@@ -49,21 +49,22 @@ class GambleCog(commands.Cog):
         data = {
             "UserId" : user_id,
             "Name" : str(ctx.author),
-            "Money" : "0"
+            "Money" : "100"
         }
 
         if(user_id not in userMoney.keys()):
             db.child("Users").child(f"{user_id}").set(data)
             await ctx.send(f"Welcome to our gambling club {ctx.author.mention}")
         else:
-            await ctx.send("You're already in our gambling group")
+            await ctx.send("You're already in our gambling club")
 
     @commands.command(aliases=['bal', 'money'])
     async def balance(self, ctx):
+        """To check your balance"""
         user_id = str(ctx.author.id)
         user = db.child("Users").get()
-        userMoney = user.val()
-        if(user_id not in userMoney.keys()):
+        userMoney = user.val() #ordered dictionary
+        if(user_id not in userMoney.keys()): #userMoney.keys() == only keys 
             await ctx.send(f"{ctx.author.mention} First Please use command `z.enter` to enter in our gambling club")
             return
         balance = userMoney[user_id]["Money"]
@@ -72,7 +73,7 @@ class GambleCog(commands.Cog):
 
     @commands.command(aliases=['cf'])
     async def coinflip(self, ctx, amount, choice=None ):
-
+        """Flip your coin to test your luck"""
         user_id = str(ctx.author.id)
         user = db.child("Users").get()
         userMoney = user.val()
@@ -85,8 +86,14 @@ class GambleCog(commands.Cog):
             await ctx.send(f"{ctx.author.mention} First use the command `z.enter` to enter in our gambling club")
             return
 
-        if(amount == "all"):
-            amount = balance
+        if (int(amount) > 50000):
+            amount = "50000"
+
+        elif(amount == "all"):
+            if(int(amount) > 50000):
+                amount = "50000"
+            else:
+                amount = balance
 
         if(int(balance)<int(amount)):
             await ctx.send(f"Poor {ctx.author.mention}!! You don't have a sufficient balance")
@@ -115,15 +122,26 @@ class GambleCog(commands.Cog):
             db.child("Users").child(user_id).update({"Money": balance})
 
     @commands.command()
-    async def give(self, ctx, amount:int, receiver:discord.Member):
+    async def give(self, ctx, amount:int, receiver:discord.User):
+        """Give money to the user"""
         user_id = str(ctx.author.id)
+        
+        
         user = db.child("Users").get()
         userMoney = user.val()
-        balance = userMoney[user_id]["Money"]
-        receiver_balance = userMoney[str(receiver.id)]["Money"]
+        
+        
         if(str(receiver.id) not in userMoney.keys()):
-            await ctx.send(f"Ask {receiver.mention} to enter in our gambling club")
+            # print("true")
+            await ctx.send(f"Ask {receiver.mention} to enter in our gambling arena")
+            
+        elif(user_id not in userMoney.keys()):
+            await ctx.send(f"{ctx.author.mention} First use the command `z.enter` to enter in our gambling club")
+            
         else:
+            balance = userMoney[user_id]["Money"]
+            receiver_balance = userMoney[str(receiver.id)]["Money"]
+
             new_balance_giver = int(balance) - amount
 
             db.child("Users").child(user_id).update({"Money": str(new_balance_giver)})
@@ -132,7 +150,50 @@ class GambleCog(commands.Cog):
 
             db.child("Users").child(str(receiver.id)).update({"Money": str(new_balance_receiver)})
 
-            await ctx.send(f"💵 | {ctx.author.name} sent {amount} zurrency to {receiver.mention}")
+            await ctx.send(f"{ctx.author.mention} give {amount} to {receiver.mention}")
+
+
+    @commands.command()
+    async def steal(self, ctx, member:discord.User):
+        """Steal money from the user"""
+        luck = [0, 1]
+        chance = random.choice(luck)
+        
+        stealerId = str(ctx.author.id)
+        userId = str(member.id)
+        
+        user = db.child("Users").get()
+        userMoney = user.val()
+        
+        
+        if(stealerId not in userMoney.keys()):
+            await ctx.send(f"{ctx.author.mention} First use the command `z.enter` to enter in our gambling club")
+            return
+        elif(userId not in userMoney.keys()):
+            await ctx.send(f"{member.mention} First use the command `z.enter` to enter in our gambling club")
+            return
+        else:
+            getStealerMoney = userMoney[stealerId]['Money']
+            getUserMoney = userMoney[userId]['Money']
+
+            if(int(getUserMoney) == 0):
+                await ctx.send(f"Poor {member.mention} has nothing to steal.")
+                
+            else:
+                stealPercent = random.randint(1, 5)
+                stealAmount = (int(getUserMoney)*(stealPercent*10)/100)
+
+                if(chance == 1):    
+                    newUserMoney = int(getUserMoney) - stealAmount
+                    newStealerMoney = int(getStealerMoney) + stealAmount
+                    db.child("Users").child(stealerId).update({"Money": str(newStealerMoney)})
+                    db.child("Users").child(userId).update({"Money": str(newUserMoney)})
+                    await ctx.send(f"You succesfully stole {stealAmount} zenoency from {user.name}.")
+                else:
+                    newStealerMoney = int(getStealerMoney) - stealAmount
+                    db.child("Users").child(stealerId).update({"Money": str(newStealerMoney)})
+                    await ctx.send(f"Oops!! Police caught you. As a penalty you pay {stealAmount} zenoency to the police")
+
 
 
     # @commands.command()

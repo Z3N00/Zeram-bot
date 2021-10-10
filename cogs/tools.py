@@ -16,15 +16,15 @@ class tools(commands.Cog):
 
 
     @commands.command(aliases=['av', 'pfp'])
-    async def avatar(self, ctx, member: discord.Member = None):
+    async def avatar(self, ctx, member: discord.User = None):
         """Get user profile picture"""
         embed = discord.Embed(description='Your avatar 😳 ')
 
         if member == None:
-            embed.set_image(url=ctx.author.avatar_url_as(static_format='jpeg'))
+            embed.set_image(url=ctx.author.avatar.url)
             await ctx.send(embed=embed)
         else:
-            embed.set_image(url=member.avatar_url_as(static_format='jpeg'))
+            embed.set_image(url=member.avatar.url)
             await ctx.send(embed=embed)
 
 

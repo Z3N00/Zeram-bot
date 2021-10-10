@@ -1,3 +1,4 @@
+from json.decoder import JSONDecodeError
 import discord
 from discord.ext import commands
 import requests
@@ -106,7 +107,7 @@ class fun(commands.Cog):
         quotation = data[0]
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(description=quotation, color=value)
-        embed.set_author(name='Your Quote', icon_url=ctx.author.avatar_url)
+        embed.set_author(name='Your Quote', icon_url=ctx.author.avatar.url)
 
         await ctx.send(embed=embed)
 
@@ -144,23 +145,28 @@ class fun(commands.Cog):
     async def wallpaper(self, ctx):
         """Get best Wallpapers """
         url = 'https://www.reddit.com/r/wallpapers.json?limit=100'
-        response = requests.get(url, headers = {'User-agent': 'Zeram'})
-        value = random.randint(0, 0xffffff)
-        data = response.json()['data']['children']
-        i = random.randint(0, 100)
-        current_post = data[i]['data']
-        image_url = current_post['url']
-        if '.png' in image_url:
-            extension = '.png'
-        elif '.jpg' in image_url or '.jpeg' in image_url:
-            extension = '.jpeg'
-        elif 'imgur' in image_url:
-            image_url += '.jpeg'
-            extension = '.jpeg'
+        try:
+            response = requests.get(url, headers = {'User-agent': 'Zeram'})
+            value = random.randint(0, 0xffffff)
+            data = response.json()['data']['children']
+            i = random.randint(0, 100)
+            current_post = data[i]['data']
+            image_url = current_post['url']
+            if '.png' in image_url:
+                extension = '.png'
+            elif '.jpg' in image_url or '.jpeg' in image_url:
+                extension = '.jpeg'
+            elif 'imgur' in image_url:
+                image_url += '.jpeg'
+                extension = '.jpeg'
 
-        embed = discord.Embed(color=value)
-        embed.set_image(url=image_url)
+            embed = discord.Embed(color=value)
+            embed.set_image(url=image_url)
 
+            
+        except(JSONDecodeError, json.JSONDecodeError):
+            embed.set_image(url="https://media.discordapp.net/attachments/227771971549528074/621051194202390549/aranha_no_teclado_gif_2.gif")
+        
         await ctx.send(embed=embed)
 
 
@@ -199,24 +205,16 @@ class fun(commands.Cog):
         result = random.randint(1, 100)
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
+        
         if member is None:
-            if ctx.author.id == 348349907746291722:
-                mari = "You're 100% gay 😎🤙🏻"
-                embed.add_field(name='Gay Meter 🏳️‍🌈', value=mari)
-                await ctx.send(embed=embed)
-            else:
-                rest = f"You're {result}% gay"
-                embed.add_field(name='Gay Meter 🏳️‍🌈', value=rest)
-                await ctx.send(embed=embed)
+            rest = f"You're {result}% gay"
+            embed.add_field(name='Gay Meter 🏳️‍🌈', value=rest)
+            await ctx.send(embed=embed)
+        
         else:
-            if member.id == 348349907746291722:
-                mari = "You're 100% gay 😎🤙🏻"
-                embed.add_field(name='Gay Meter 🏳️‍🌈', value=mari)
-                await ctx.send(embed=embed)
-            else:
-                rest = f"{member.name} is {result}% gay"
-                embed.add_field(name='Gay Meter 🏳️‍🌈', value=rest)
-                await ctx.send(embed=embed)
+            rest = f"{member.name} is {result}% gay"
+            embed.add_field(name='Gay Meter 🏳️‍🌈', value=rest)
+            await ctx.send(embed=embed)
 
 
     @commands.command()

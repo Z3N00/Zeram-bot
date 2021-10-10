@@ -2,7 +2,8 @@ import discord
 from discord.ext import commands
 import urbandict
 import wikipedia
-from googletrans import translator
+import translators as ts
+import random
 
 class Member(commands.Cog):
     """TestCog"""
@@ -23,24 +24,23 @@ class Member(commands.Cog):
 
     @commands.command()
     async def translate(self, ctx, *, message):
-        icon = 'https://botlist.imgix.net/3605/c/discord_translator_avatar_v3-medium.jpg?auto=compress'
         value = random.randint(0, 0xffffff)
-        translator = Translator()
-        language = translator.detect(message)
-        translation = translator.translate(message)
-        ans = translation.text
-        embed = discord.Embed(description='**' + ans + '**', color=value, title='Message: ' + message)
-        embed.set_footer(text='Language detected: ' + language.lang, icon_url=icon)
+        translation = ts.google(message)
+        embed = discord.Embed(description='Translation: ' + '**' + translation + '**', color=value, title='Message: ' + message)
         await ctx.send(embed=embed)
 
 
     @commands.command()
     async def define(self, ctx, *, term):
         information = urbandict.define(term)
-        data = information[0]
-        embed = discord.Embed(description=data['def'] + "\n", color=discord.Colour.blue())
-        embed.set_author(name='Definition of ' + term, icon_url=ctx.author.avatar_url)
-        embed.add_field(name='Example', value='```' + data['example'] + '```', inline=False)
+        
+        data1 = information[0]
+        data2 = information[1]
+        embed = discord.Embed(description= "1. " + data1['def'] + "\n" + "2. " + data2['def'], color=discord.Colour.blue())
+        
+        embed.add_field(name='Example 1', value='```' + data1['example'] + '```', inline=False)
+        embed.add_field(name='Example 2', value='```' + data2['example'] + '```', inline=False)
+        embed.set_author(name='Definition of ' + term, icon_url=ctx.author.avatar.url)
         await ctx.send(embed=embed)
 
 
@@ -64,7 +64,9 @@ class Member(commands.Cog):
             flag = True
             # print(data)
         if flag:
+            failQuery = wikipedia.page(query)
             await ctx.send("Sorry I am unable to find answers to your query... :grimacing:")
+            await ctx.send(f"You can click on this link for your answer: {failQuery.url} :smiley:")
         else:
             Data = data.split("\n")
 

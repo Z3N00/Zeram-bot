@@ -40,7 +40,7 @@ class emotes(commands.Cog):
         result = await self.action('anime blush')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} is blushing!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} is blushing!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -51,7 +51,7 @@ class emotes(commands.Cog):
         result = await self.action('anime cry')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} is crying!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} is crying!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -62,7 +62,7 @@ class emotes(commands.Cog):
         result = await self.action('anime dance')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} is dancing!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} is dancing!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -73,7 +73,7 @@ class emotes(commands.Cog):
         result = await self.action('anime lewd')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} says, thats lewd!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} says, thats lewd!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -83,7 +83,7 @@ class emotes(commands.Cog):
         result = await self.action('anime pout')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} pouts!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} pouts!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -93,7 +93,7 @@ class emotes(commands.Cog):
         result = await self.action('anime shrug')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} shrugs wew!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} shrugs wew!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -103,7 +103,7 @@ class emotes(commands.Cog):
         result = await self.action('anime sleep')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} is sleeping!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} is sleeping!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -113,7 +113,7 @@ class emotes(commands.Cog):
         result = await self.action('anime smile')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} is smiling!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} is smiling!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -124,7 +124,7 @@ class emotes(commands.Cog):
         result = await self.action('anime smug')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} has a smug look!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} has a smug look!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -134,7 +134,7 @@ class emotes(commands.Cog):
         result = await self.action('anime thumbsup')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} has a thumbs up!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} has a thumbs up!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -144,7 +144,7 @@ class emotes(commands.Cog):
         result = await self.action('anime wag')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} Wags!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} Wags!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -155,7 +155,7 @@ class emotes(commands.Cog):
         result = await self.action('anime thinking')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} is thinking!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} is thinking!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -166,7 +166,7 @@ class emotes(commands.Cog):
         result = await self.action('anime triggered')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} is now triggered!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} is now triggered!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -176,7 +176,7 @@ class emotes(commands.Cog):
         result = await self.action('anime teehee')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} :3!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} :3!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -186,7 +186,7 @@ class emotes(commands.Cog):
         result = await self.action('anime deredere')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} awhhh!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} awhhh!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -196,7 +196,7 @@ class emotes(commands.Cog):
         result = await self.action('anime scoff')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} tsk!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} tsk!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -206,7 +206,7 @@ class emotes(commands.Cog):
         result = await self.action('anime happy')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} is happy!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} is happy!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 
@@ -216,7 +216,7 @@ class emotes(commands.Cog):
         result = await self.action('anime grin')
         value = random.randint(0, 0xffffff)
         embed = discord.Embed(color=value)
-        embed.set_author(name=f'{ctx.author.name} uff..!', icon_url=ctx.author.avatar_url)
+        embed.set_author(name=f'{ctx.author.name} uff..!', icon_url=ctx.author.avatar.url)
         embed.set_image(url=result)
         await ctx.send(embed=embed)
 

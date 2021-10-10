@@ -25,10 +25,10 @@ class basic(commands.Cog):
         """Bot will say hello"""
         await ctx.send("hello " + ctx.author.mention)
 
-    @commands.command()
-    async def ip(self, ctx):
-        ip = get('https://api.ipify.org').text
-        await ctx.send(ip)
+    # @commands.command()
+    # async def ip(self, ctx):
+    #     ip = get('https://api.ipify.org').text
+    #     await ctx.send(ip)
         
     @commands.command()
     async def ping(self, ctx):

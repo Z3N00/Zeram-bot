@@ -2,6 +2,7 @@ pyaztro
 brainyquote
 urbandict
 googletrans
+translators
 pyjokes
 git+https://github.com/Rapptz/discord.py
 discord

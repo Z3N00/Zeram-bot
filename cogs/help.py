@@ -16,13 +16,16 @@ class Help(commands.Cog):
         if command is None:
 
             embed = discord.Embed(description=' Use z.help {command}, For more info on a specific command', color=0x00FF00)
-            embed.set_author(name='Command List', icon_url=ctx.author.avatar_url)
+            embed.set_author(name='Command List', icon_url = author.avatar.url)
 
             basic = f'`ping`  `big`  `hello`'
             embed.add_field(name=f'😊 **Basic**', value=basic, inline=True)
 
             game = f'`guess`  `rps`'
             embed.add_field(name=f'🎲 **Games**', value=game, inline=False)
+
+            gamble = f'`entergamble`  `balance`  `coinflip`  `give`  `steal`'
+            embed.add_field(name=f'🎰 **Gambling**', value=gamble, inline=False)
 
             autoreply = f'`bind`  `unbind`  `channel`'
             embed.add_field(name=f'🤖 **Chat Bot**', value=autoreply, inline=False)
@@ -48,8 +51,8 @@ class Help(commands.Cog):
             emotes = f"`blush`  `dance`  `lewd`  `pout`  `shrug`  `sleepy`  `smile`  `smug`  `thumbsup`  `wag` `thinking`  `triggered`  `teehee`  `deredere`  `scoff`  `happy`  `grin`"
             embed.add_field(name=f'😁 **Emotes**', value=emotes, inline=False)
 
-            corona = f'`coronavirus`  `cvlb`  `cvh`'
-            embed.add_field(name=f'😷 **Corona Stats**', value=corona, inline=False)
+            # corona = f'`coronavirus`  `cvlb`  `cvh`'
+            # embed.add_field(name=f'😷 **Corona Stats**', value=corona, inline=False)
 
             nsfw = f'`pgif`  `boobs`  `ass`'
             embed.add_field(name=f'💦 **NSFW**', value=nsfw, inline=False)

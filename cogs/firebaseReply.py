@@ -20,7 +20,7 @@ firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
 class firebaseReply(commands.Cog):
-
+    """Auto Reply"""
     def __init__(self, bot):
         self.bot = bot
 
@@ -29,6 +29,7 @@ class firebaseReply(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_channels=True)
     async def bind(self, ctx, channel: discord.TextChannel):
+        """Bind The channel for auto reply"""
         guild_id = str(ctx.guild.id)
         channel_id = str(channel.id)
 
@@ -43,6 +44,7 @@ class firebaseReply(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_channels=True)
     async def unbind(self, ctx, channel: discord.TextChannel):
+        """Unbind the channel from auto reply"""
         guild_id = str(ctx.guild.id)
         channel_id = str(channel.id)
         servers = db.child("Servers").get()
@@ -100,6 +102,7 @@ class firebaseReply(commands.Cog):
     
     @commands.command()
     async def channel(self, ctx):
+        """To check the channel, which channel is selected for autoreply"""
         channel = ctx.channel
 
         servers = db.child("Servers").get()
