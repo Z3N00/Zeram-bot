@@ -13,7 +13,7 @@ attrs
 certifi
 cffi
 chardet
-clear
+
 
 goodlogging
 idna
