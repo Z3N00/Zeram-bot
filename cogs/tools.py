@@ -3,7 +3,7 @@ from discord.ext import commands
 import random
 
 import wikipedia
-#from googletrans import Translator
+from googletrans import Translator
 import requests
 import pytz
 import datetime
@@ -30,20 +30,20 @@ class tools(commands.Cog):
 
 
 
-    # @commands.command(aliases=['t'])
-    # async def translate(self, ctx, *, message):
-    #     """Translate any language"""
-    #     icon = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.U8k9cD9ed7f4JOONNJ3uXQAAAA%26pid%3DApi&f=1'
-    #     value = random.randint(0, 0xffffff)
-    #     translator = Translator()
-    #     language = translator.detect(message)
-    #     await ctx.send(language)
-    #     translation = translator.translate(message)
-    #     await ctx.send(translation)
-    #     ans = translation.text
-    #     embed = discord.Embed(description='**' + ans + '**', color=value, title='Message: ' + message)
-    #     embed.set_footer(text='Language detected: ' + language.lang, icon_url=icon)
-    #     await ctx.send(embed=embed)
+    @commands.command(aliases=['t'])
+    async def translate(self, ctx, *, message):
+        """Translate any language"""
+        icon = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.U8k9cD9ed7f4JOONNJ3uXQAAAA%26pid%3DApi&f=1'
+        value = random.randint(0, 0xffffff)
+        translator = Translator()
+        language = translator.detect(message)
+        await ctx.send(language)
+        translation = translator.translate(message)
+        await ctx.send(translation)
+        ans = translation.text
+        embed = discord.Embed(description='**' + ans + '**', color=value, title='Message: ' + message)
+        embed.set_footer(text='Language detected: ' + language.lang, icon_url=icon)
+        await ctx.send(embed=embed)
 
 
     @commands.command()
