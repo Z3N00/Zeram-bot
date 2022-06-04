@@ -20,7 +20,8 @@ initial_extensions = ['cogs.basic',
 
 intents = discord.Intents.default()
 intents.members = True
-bot = commands.Bot(command_prefix=commands.when_mentioned_or('z.', 'Z.'), description='Basic commands for Zeram')
+#intents=discord.Intents.all()
+bot = commands.Bot(command_prefix=commands.when_mentioned_or('z.', 'Z.'), description='Basic commands for Zeram', intents=intents)
 bot.remove_command('help')
 
 if __name__ == '__main__':
