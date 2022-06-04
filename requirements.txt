@@ -40,3 +40,4 @@ mysql-connector-python
 pyrebase
 
 urbandictionary_python
+requests
