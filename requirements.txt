@@ -1,7 +1,7 @@
 pyaztro
 brainyquote
 urbandict
-googletrans==3.1.0a0
+googletrans
 translators
 pyjokes
 git+https://github.com/Rapptz/discord.py
