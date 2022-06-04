@@ -75,30 +75,32 @@ class firebaseReply(commands.Cog):
         servers = db.child("Servers").get()
 
         obj = servers.val()
-
-        if ((guild_id in obj[guild_id]) and (channel_id == obj[guild_id][guild_id])):
-            if not message.author.bot and self.bot.user.id:
-                async with channel.typing():
-                    try:
-                        input = re.sub(f'<@{str(message.author.id)}>', '', message.content).strip()
-                        params = {'botid': 'c867aeea4e345ad2', 'custid': message.author.id, 'input': input or 'Hello'}
-                        async with aiohttp.ClientSession(headers={'User-agent': 'Zeram'}) as bot:
-                            async with bot.get('https://www.pandorabots.com/pandora/talk-xml', params=params) as resp:
-                                if resp.status == 200:
-                                    text = await resp.text()
-                                    text = text[text.find('<that>') + 6:text.rfind('</that>')]
-                                    text = text.replace('&quot;', '"').replace('&lt;', '<').replace('&gt;',
-                                                                                                    '>').replace(
-                                        '&amp;', '&').replace('<br>', ' ')
-                                    await message.channel.send(text)
-                                else:
-                                    await message.channel.send('Uh oh, I didn\'t quite catch that!')
-                    except asyncio.TimeoutError:
-                        await message.channel.send('Uh oh, I think my head is on backwards!')
+        try:
+            if ((guild_id in obj[guild_id]) and (channel_id == obj[guild_id][guild_id])):
+                if not message.author.bot and self.bot.user.id:
+                    async with channel.typing():
+                        try:
+                            input = re.sub(f'<@{str(message.author.id)}>', '', message.content).strip()
+                            params = {'botid': 'c867aeea4e345ad2', 'custid': message.author.id, 'input': input or 'Hello'}
+                            async with aiohttp.ClientSession(headers={'User-agent': 'Zeram'}) as bot:
+                                async with bot.get('https://www.pandorabots.com/pandora/talk-xml', params=params) as resp:
+                                    if resp.status == 200:
+                                        text = await resp.text()
+                                        text = text[text.find('<that>') + 6:text.rfind('</that>')]
+                                        text = text.replace('&quot;', '"').replace('&lt;', '<').replace('&gt;',
+                                                                                                        '>').replace(
+                                            '&amp;', '&').replace('<br>', ' ')
+                                        await message.channel.send(text)
+                                    else:
+                                        await message.channel.send('Uh oh, I didn\'t quite catch that!')
+                        except asyncio.TimeoutError:
+                            await message.channel.send('Uh oh, I think my head is on backwards!')
+                else:
+                    return
             else:
                 return
-        else:
-            return
+        except:
+            pass
     
     @commands.command()
     async def channel(self, ctx):

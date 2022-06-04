@@ -1,7 +1,7 @@
 pyaztro
 brainyquote
 urbandict
-googletrans
+googletrans==3.1.0a0
 translators
 pyjokes
 git+https://github.com/Rapptz/discord.py
@@ -13,7 +13,7 @@ attrs
 certifi
 cffi
 chardet
-
+clear
 
 goodlogging
 idna
@@ -38,3 +38,5 @@ pytz
 datetime
 mysql-connector-python
 pyrebase
+
+urbandictionary_python

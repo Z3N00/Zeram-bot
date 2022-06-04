@@ -17,8 +17,12 @@ initial_extensions = ['cogs.basic',
                       'cogs.firebaseReply',
                       'cogs.image',
                       'cogs.gamble']
+
+intents = discord.Intents.default()
+intents.members = True
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('z.', 'Z.'), description='Basic commands for Zeram')
 bot.remove_command('help')
+
 if __name__ == '__main__':
     for extension in initial_extensions:
         try:

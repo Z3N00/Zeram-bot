@@ -7,7 +7,8 @@ from googletrans import Translator
 import requests
 import pytz
 import datetime
-import aiohttp
+import urbandictionary_python
+
 class tools(commands.Cog):
     """Useful Commands"""
     def __init__(self, bot):
@@ -29,14 +30,16 @@ class tools(commands.Cog):
 
 
 
-    @commands.command()
+    @commands.command(aliases=['t'])
     async def translate(self, ctx, *, message):
         """Translate any language"""
-        icon = 'https://botlist.imgix.net/3605/c/discord_translator_avatar_v3-medium.jpg?auto=compress'
+        icon = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.U8k9cD9ed7f4JOONNJ3uXQAAAA%26pid%3DApi&f=1'
         value = random.randint(0, 0xffffff)
         translator = Translator()
         language = translator.detect(message)
+        await ctx.send(language)
         translation = translator.translate(message)
+        await ctx.send(translation)
         ans = translation.text
         embed = discord.Embed(description='**' + ans + '**', color=value, title='Message: ' + message)
         embed.set_footer(text='Language detected: ' + language.lang, icon_url=icon)
@@ -46,11 +49,13 @@ class tools(commands.Cog):
     @commands.command()
     async def define(self, ctx, *, term):
         """Define any word"""
-        information = urbandict.define(term)
-        data = information[2]
-        embed = discord.Embed(description=data['def'] + "\n", color=discord.Colour.blue())
-        embed.set_author(name='Definition of ' + term, icon_url=ctx.author.avatar_url)
-        embed.add_field(name='Example', value='```' + data['example'] + '```', inline=False)
+        information = urbandictionary_python.UrbanDictionary(term)
+        # print(information)
+        # await ctx.send(information)
+        data = information.meaning()
+        embed = discord.Embed(description=data + "\n", color=discord.Colour.blue())
+        embed.set_author(name='Definition of ' + term, icon_url=ctx.author.avatar.url)
+        embed.add_field(name='Example', value='```' + information.example() + '```', inline=False)
         await ctx.send(embed=embed)
 
 
@@ -90,9 +95,9 @@ class tools(commands.Cog):
         else:
             Data = data.split("\n")
 
-        for d in Data:
-            await ctx.send("```" + d + "```")
-        await ctx.send("I hope you found this answer convincing. :smiley:")
+       # for d in Data:
+        await ctx.send("```" + data + "```")
+        await ctx.send(f"I hope you found this answer convincing. For more information go to {data.url} :smiley:")
     @search.error
     async def search_error(self, ctx, error):
         if isinstance(error, commands.CheckFailure):
@@ -139,8 +144,8 @@ class tools(commands.Cog):
         embed = discord.Embed(colour=member.colour, timestamp=ctx.message.created_at)
 
         embed.set_author(name=f'User Info - {member}')
-        embed.set_thumbnail(url=member.avatar_url)
-        embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar_url)
+        embed.set_thumbnail(url=member.avatar.url)
+        embed.set_footer(text=f'Requested by {ctx.author}', icon_url=ctx.author.avatar.url)
 
         embed.add_field(name="ID", value=member.id)
         embed.add_field(name="Guild name", value=member.display_name)
@@ -163,17 +168,22 @@ class tools(commands.Cog):
         guild_age = (ctx.message.created_at - guild.created_at).days
         created_at = f"Server created on {guild.created_at.strftime('%b %d %Y at %H:%M')}. That\'s over {guild_age} days ago!"
         color = discord.Color.green()
-
+       
+        # count = 0
+        # for member in ctx.guild.members:  # .members was added
+        #   if member.status != discord.Status.offline:
+        #     count =+ 1
+        # print(f"count: {count}" )
         em = discord.Embed(description=created_at, color=color)
-        em.add_field(name='Online Members', value=len({m.id for m in guild.members if m.status is not discord.Status.offline}))
-        em.add_field(name='Total Members', value=len(guild.members))
+        em.add_field(name='Online Members', value=len([m.id for m in guild.members if m.status is not discord.Status.offline]))
+        em.add_field(name='Total Members', value=guild.member_count)
         em.add_field(name='Text Channels', value=len(guild.text_channels))
         em.add_field(name='Voice Channels', value=len(guild.voice_channels))
         em.add_field(name='Roles', value=len(guild.roles))
-        em.add_field(name='Owner', value=guild.owner)
+        em.add_field(name='Owner', value=f"<@{guild.owner_id}>")
 
-        em.set_thumbnail(url=None or guild.icon_url)
-        em.set_author(name=guild.name, icon_url=None or guild.icon_url)
+        em.set_thumbnail(url=None or guild.icon.url)
+        em.set_author(name=guild.name, icon_url=None or guild.icon.url)
         await ctx.send(embed=em)
 
 

@@ -3,7 +3,7 @@ from random import randrange
 import discord
 from discord.ext import commands
 from discord.ext.commands.core import command
-from pyasn1.type.univ import Null
+#from pyasn1.type.univ import Null
 import pyrebase
 import random
 
